@@ -1,21 +1,22 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Phantom City Studios</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to bottom, #111, #222);
       color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
       padding: 40px;
+      overflow-x: hidden;
     }
 
     .container {
@@ -30,8 +31,7 @@
 
     .text-content {
       max-width: 45%;
-      padding-left: 60px; /* Left border spacing */
-      box-sizing: border-box;
+      padding-left: 60px;
     }
 
     h1 {
@@ -54,7 +54,7 @@
       background: #000;
       border: 3px solid #ffcc00;
       flex-shrink: 0;
-      margin-right: 100px; /* Right margin for spacing */
+      margin-right: 100px;
     }
 
     .image-box img {
@@ -71,14 +71,13 @@
     }
 
     @media (max-width: 768px) {
-      body {
+      .container {
         flex-direction: column;
-        height: auto;
-        padding: 20px;
+        align-items: center;
+        padding: 10px;
       }
 
-      .text-content,
-      .image-box {
+      .text-content, .image-box {
         max-width: 100%;
         padding-left: 0;
         margin: 20px auto;
@@ -92,19 +91,21 @@
 </head>
 <body>
 
-  <div class="text-content">
-    <h1>Welcome to Phantom City Studios</h1>
-    <p>We craft powerful AI-driven video experiences, blending music, visuals, and storytelling. Whether you're a creator or brand, join us to transform ideas into cinematic realities.</p>
-    <p><strong>Visit:</strong> <a href="https://phantomcitystudios.com" target="_blank" style="color: #66ccff;">phantomcitystudios.com</a></p>
-  </div>
+  <div class="container">
+    <div class="text-content">
+      <h1>Welcome to Phantom City Studios</h1>
+      <p>We craft powerful AI-driven video experiences, blending music, visuals, and storytelling. Whether you're a creator or brand, join us to transform ideas into cinematic realities.</p>
+      <p><strong>Visit:</strong> <a href="https://phantomcitystudios.com" target="_blank" style="color: #66ccff;">phantomcitystudios.com</a></p>
+    </div>
 
-  <div class="image-box">
-    <img src="images/1.png" class="active" />
-    <img src="images/2.png" />
-    <img src="images/3.png" />
-    <img src="images/4.png" />
-    <img src="images/5.png" />
-    <img src="images/6.png" />
+    <div class="image-box">
+      <img src="images/1.png" class="active" />
+      <img src="images/2.png" />
+      <img src="images/3.png" />
+      <img src="images/4.png" />
+      <img src="images/5.png" />
+      <img src="images/6.png" />
+    </div>
   </div>
 
   <script>
