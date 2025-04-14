@@ -5,6 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Services | Phantom City Studios</title>
   <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+  .blob-wrapper {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .blob-wrapper svg {
+    width: 200%;
+    height: 200%;
+    filter: blur(100px);
+    mix-blend-mode: overlay;
+    transform: rotate(30deg);
+    opacity: 0.06;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .text-content {
+    max-width: 45%;
+    padding-left: 60px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  .text-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #ffcc00;
+    transition: color 0.3s ease;
+  }
+
+  h1:hover {
+    color: #ffd700;
+  }
+
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+
+  a {
+    color: #66ccff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+
+  .cta-glow {
+    font-weight: bold;
+    font-size: 1.1em;
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff;
+    }
+    to {
+      text-shadow: 0 0 15px #ffffff, 0 0 30px #66ccff;
+    }
+  }
+</style>
 </head>
 <body>
   <header>
