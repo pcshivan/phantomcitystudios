@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Phantom City Studios</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+<style>
+  .blob-wrapper {
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .blob-wrapper svg {
+    width: 200%;
+    height: 200%;
+    filter: blur(100px);
+    mix-blend-mode: overlay;
+    transform: rotate(30deg);
+    opacity: 0.06;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .text-content {
+    max-width: 45%;
+    padding-left: 60px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+  }
+
+  .text-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  h1 {
+    font-size: 3em;
+    color: #ffcc00;
+    transition: color 0.3s ease;
+  }
+
+  h1:hover {
+    color: #ffd700;
+  }
+
+  p {
+    font-size: 1.2em;
+    line-height: 1.5;
+  }
+
+  a {
+    color: #66ccff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: #ffffff;
+  }
+
+  .cta-glow {
+    font-weight: bold;
+    font-size: 1.1em;
+    animation: glow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff;
+    }
+    to {
+      text-shadow: 0 0 15px #ffffff, 0 0 30px #66ccff;
+    }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul style="list-style:none; display:flex; gap:2rem; justify-content:center;">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="blob-wrapper">
+    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#ffcc00">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite"
+          values="M300,350 Q400,450 500,300 Q400,150 300,250 Q200,350 100,300 Q200,150 300,250 Z;
+                  M300,300 Q450,350 500,250 Q400,100 300,200 Q200,300 100,250 Q150,400 300,300 Z;
+                  M300,350 Q400,450 500,300 Q400,150 300,250 Q200,350 100,300 Q200,150 300,250 Z"/>
+      </path>
+    </svg>
+  </div>
+
+  <main class="container scroll-fade">
+    <div class="text-content visible">
+      <h1>Studio Blog</h1>
+      <p>Explore our journey at the cutting edge of creativity — from sound design theory and AI animation, to behind-the-scenes production breakdowns of music videos and films.</p>
+      <p>Follow our experiments, failures, and victories in building the future of art.</p>
+    </div>
+  </main>
+
+  <footer style="text-align:center; padding: 2rem;">© 2025 Phantom City Studios</footer>
+</body>
+</html>
