@@ -200,8 +200,11 @@ body {
 
 /* --- 3D TILT IMAGE BOX --- */
 .image-box {
-    width: 480px;
-    height: 720px;
+    max-width: 480px;
+    /* max-height: 720px; */ 
+    height: auto;
+    aspect-ratio: 2 / 3;
+    max-height: 60vh;
     border-radius: 20px;
     box-shadow: 0 0 40px rgba(255, 204, 0, 0.4);
     overflow: hidden;
@@ -860,6 +863,6 @@ footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-s
     
     .container { flex-direction: row; justify-content: space-between; align-items: center; min-height: 80vh; }
     .text-content { max-width: 48%; text-align: left; }
-    .image-box { width: 480px; height: 720px; flex-shrink: 0; }
+    .image-box { width: 480px; height: 720px; aspect-ratio: unset; flex-shrink: 0; }
 }
 
