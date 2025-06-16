@@ -678,6 +678,18 @@ footer {
 }
 
 
+/* === RESPONSIVE & MOBILE STYLES === */
+@media (max-width: 768px) {
+    .main-header nav ul {
+        display: none; /* Hides nav links on mobile; requires JS for a hamburger menu */
+    }
+    .main-header .logo {
+        font-size: 1.1rem;
+    }
+    .hero-section {
+        padding: 60px 20px;
+    }
+}
 
 
 
