@@ -5,20 +5,28 @@
 */
 
 document.addEventListener('DOMContentLoaded', () => {
-
     // --- Mobile Hamburger Menu Logic ---
     const hamburger = document.querySelector('.hamburger-menu');
     const mobileNav = document.querySelector('.mobile-nav');
+    
     if (hamburger && mobileNav) {
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('is-active');
             mobileNav.classList.toggle('is-active');
         });
+        
+        // Close menu when a link is clicked
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('is-active');
+                mobileNav.classList.remove('is-active');
+            });
+        });
     }
 
     // --- Dynamic Image Slideshow for index.html ---
     const imageBox = document.querySelector('.image-box');
-    if (imageBox) {
+    if (imageBox) { // This check prevents errors on pages without an .image-box
         const images = imageBox.querySelectorAll('img');
         if (images.length > 0) {
             let currentIndex = 0;
@@ -47,8 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         faders.forEach(fader => observer.observe(fader));
     }
 
-
-    // --- 3D Tilt Effect for Image Box ---
+    // --- 3D Tilt Effect for index.html ---
     if (imageBox) {
         const handleTilt = (e) => {
             const box = imageBox.getBoundingClientRect();
@@ -56,21 +63,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const y = (e.clientY || (e.touches && e.touches[0].clientY)) - box.top;
             const centerX = box.width / 2;
             const centerY = box.height / 2;
-            const rotateX = ((y - centerY) / centerY) * 8; // Reduced intensity
-            const rotateY = ((x - centerX) / centerX) * -8; // Reduced intensity
+            const rotateX = ((y - centerY) / centerY) * 8;
+            const rotateY = ((x - centerX) / centerX) * -8;
             imageBox.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         }
-
-        const resetTilt = () => {
-            imageBox.style.transform = 'rotateX(0deg) rotateY(0deg)';
-        }
-
+        const resetTilt = () => { imageBox.style.transform = 'rotateX(0deg) rotateY(0deg)'; }
         imageBox.addEventListener('mousemove', handleTilt);
         imageBox.addEventListener('mouseleave', resetTilt);
         imageBox.addEventListener('touchmove', handleTilt, { passive: true });
         imageBox.addEventListener('touchend', resetTilt);
     }
 });
+
 
 /* --- YouTube IFrame API Player Logic for Portfolio --- */
 /*
