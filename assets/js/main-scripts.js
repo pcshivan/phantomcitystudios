@@ -75,11 +75,19 @@ const players = {};
 
 function onYouTubeIframeAPIReady() {
     const playerDivs = document.querySelectorAll('.yt-player');
+    
+    // Check if any player divs exist on the page to avoid errors
+    if (!playerDivs.length) {
+        return;
+    }
+
     playerDivs.forEach((div, index) => {
         const videoId = div.dataset.videoId;
-        const playerId = `player-${index}`;
-        div.id = playerId; // Assign a unique ID for the API to target
-        players[playerId] = createPlayer(playerId, videoId);
+        if (videoId) { // Only proceed if a video ID is present
+            const playerId = `player-${index}`;
+            div.id = playerId; // Assign a unique ID for the API to target
+            players[playerId] = createPlayer(playerId, videoId);
+        }
     });
 }
 
@@ -89,15 +97,15 @@ function createPlayer(elementId, videoId) {
         width: '100%',
         videoId: videoId,
         playerVars: {
-            'autoplay': 0,        // Don't autoplay on load
-            'controls': 0,        // Hide default controls
-            'loop': 1,            // Enable looping
-            'playlist': videoId,  // Required for looping a single video
+            'autoplay': 0,
+            'controls': 0,
+            'loop': 1,
+            'playlist': videoId,
             'showinfo': 0,
             'modestbranding': 1,
             'rel': 0,
             'disablekb': 1,
-            'mute': 1             // Start muted
+            'mute': 1
         },
         events: {
             'onReady': onPlayerReady
@@ -107,24 +115,22 @@ function createPlayer(elementId, videoId) {
 
 function onPlayerReady(event) {
     const playerElement = event.target.getIframe();
-    // Get the main project card container
     const container = playerElement.closest('.project-card');
     
     if (container) {
-        container.addEventListener('mouseenter', () => {
-            event.target.playVideo();
-        });
-        container.addEventListener('mouseleave', () => {
-            event.target.pauseVideo();
-        });
+        container.addEventListener('mouseenter', () => event.target.playVideo());
+        container.addEventListener('mouseleave', () => event.target.pauseVideo());
     }
 }
 
 document.querySelectorAll('.sound-toggle').forEach(button => {
     button.addEventListener('click', (e) => {
-        // Find the player within the same project card
         const card = e.currentTarget.closest('.project-card');
+        if (!card) return;
+
         const playerDiv = card.querySelector('.yt-player');
+        if (!playerDiv) return;
+
         const playerId = playerDiv.id;
         const player = players[playerId];
         const icon = button.querySelector('i');
