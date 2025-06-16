@@ -1,6 +1,6 @@
 /*
   Phantom City Studios - Main Stylesheet
-  Version: 6.0 (Military-Grade Consolidation - Detailed)
+  Version: 7.0 (Military-Grade Consolidation - Final)
   Author: Gemini AI
 */
 
@@ -82,7 +82,7 @@ body {
     position: relative;
 }
 
-/* --- HERO & CONTENT SECTIONS --- */
+/* --- HERO SECTION (Unified & Centered) --- */
 .hero-section {
     text-align: center;
     padding: 100px 20px;
@@ -115,7 +115,7 @@ body {
     transform: translateY(0);
 }
 
-/* --- PAGE-SPECIFIC CONTAINERS --- */
+/* --- UNIFIED PAGE CONTAINERS --- */
 .portfolio-container, .team-section, .services-container, .contact-container, .work-container {
     padding: 40px 20px;
     width: 100%;
