@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Portfolio - Phantom City Studios</title>
+    <!-- The main stylesheet contains all necessary styles -->
+    <link rel="stylesheet" href="assets/css/main-styles.css" />
+</head>
+<body>
+    <header class="main-header">
+        <nav>
+            <a href="index.html" class="logo">PHANTOM CITY STUDIOS</a>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>                
+                <li><a href="services.html">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>                
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="portfolio-container">
+        <div class="hero-section scroll-fade">
+            <h1>Our Creations</h1>
+            <p class="subtitle">A curated selection of our work, showcasing the fusion of AI, artistry, and cinematic storytelling. This is where ideas become reality.</p>
+        </div>
+
+        <div class="portfolio-grid">
+
+            <!-- 
+              PROJECT 1: ATMA PREMA
+              YouTube Link: https://www.youtube.com/watch?v=5FMFwyd1IKc
+            -->
+            <div class="project-card scroll-fade">
+                <div class="video-embed-wrapper">
+                    <!-- This div is the target for the YouTube player -->
+                    <div class="yt-player" data-video-id="5FMFwyd1IKc"></div>
+                    <div class="video-overlay">
+                        <div class="overlay-content">
+                            <h3>Atma Prema</h3>
+                            <p>An AI-powered music video exploring Vedic emotion and animal love.</p>
+                        </div>
+                    </div>
+                    <button class="sound-toggle" aria-label="Toggle sound for Atma Prema">
+                        <i class="fas fa-volume-mute"></i>
+                    </button>
+                </div>
+                <div class="project-info">
+                    <h4>Atma Prema</h4>
+                    <p><em>“A visual meditation. We’ve never seen anything like this. Stunning.”</em> — Animal Welfare NGO</p>
+                </div>
+            </div>
+
+            <!-- 
+              PROJECT 2: ADVERSE
+              YouTube Link: https://www.youtube.com/watch?v=aj4hDO0MGCA
+            -->
+            <div class="project-card scroll-fade">
+                <div class="video-embed-wrapper">
+                     <!-- This div is the target for the YouTube player -->
+                    <div class="yt-player" data-video-id="aj4hDO0MGCA"></div>
+                    <div class="video-overlay">
+                         <div class="overlay-content">
+                            <h3>AI Ad Film Concept</h3>
+                            <p>A cinematic claymation info-mercial conceptualized and visualized with AI.</p>
+                        </div>
+                    </div>
+                     <button class="sound-toggle" aria-label="Toggle sound for Astraverse">
+                        <i class="fas fa-volume-mute"></i>
+                    </button>
+                </div>
+                 <div class="project-info">
+                    <h4>Concept Claymation Ad Film</h4>
+                    <p><em>“The script and scenes feel like a Wes Anderson Claymation masterpiece!”</em></p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Phantom City Studios. All Rights Reserved.</p>
+    </footer>
+    
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="assets/js/main-scripts.js"></script>
+</body>
+</html>
