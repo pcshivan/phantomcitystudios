@@ -217,11 +217,12 @@ body {
 
 /* --- 3D TILT IMAGE BOX --- */
 .image-box {
-    max-width: 480px;
+    max-width: 400px;
+    width: 90%;
     /* max-height: 720px; */ 
     height: auto;
     aspect-ratio: 2 / 3;
-    max-height: 60vh;
+    max-height: 80vh;
     border-radius: 20px;
     box-shadow: 0 0 40px rgba(255, 204, 0, 0.4);
     overflow: hidden;
@@ -253,12 +254,14 @@ body {
     transition: transform 0.2s ease, box-shadow 0.3s ease;
 }*/
 .image-box img { 
-  position: relative; 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover; 
-  transition: opacity 1.2s ease-in-out; 
-  opacity: 0; 
+    position: absolute; /* CRITICAL: This makes all images stack on top of each other */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1.2s ease-in-out;
+    opacity: 0; /* All images are invisible by default */
 }
 .image-box img.active { 
   opacity: 1; 
@@ -320,6 +323,18 @@ footer {
         font-size: 1.1rem;
     }
 }
+
+/* === TABLET, IPAD & DESKTOP STYLES (Progressive Enhancement) === */
+@media (min-width: 768px) {
+    .hamburger-menu { display: none; }
+    .main-header .desktop-nav { display: flex; list-style: none; gap: 45px; margin: 0; padding: 0; }
+    .main-header .desktop-nav li a { color: var(--text-primary); text-decoration: none; font-size: 1rem; }
+    
+    .container { flex-direction: row; justify-content: space-between; align-items: center; min-height: 80vh; }
+    .text-content { max-width: 48%; text-align: left; }
+    .image-box { width: 480px; height: 720px; aspect-ratio: unset; flex-shrink: 0; }
+}
+
 /* --- OUR TEAM PAGE STYLING --- */
 .team-section {
     padding: 60px 20px 100px 20px; /* Added bottom padding */
@@ -778,10 +793,10 @@ footer {
 .mobile-nav ul li a:hover {
     color: var(--accent-gold);
 } */
-/* Hamburger animation to 'X' */
+/* Hamburger animation to 'X'
 .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
 .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } */
 
 
 /* --- HERO & CONTENT SECTIONS --- */
@@ -860,13 +875,3 @@ footer {
 /* --- FOOTER --- */
 footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 60px; }
 
-/* === TABLET, IPAD & DESKTOP STYLES (Progressive Enhancement) === */
-@media (min-width: 768px) {
-    .hamburger-menu { display: none; }
-    .main-header .desktop-nav { display: flex; list-style: none; gap: 45px; margin: 0; padding: 0; }
-    .main-header .desktop-nav li a { color: var(--text-primary); text-decoration: none; font-size: 1rem; }
-    
-    .container { flex-direction: row; justify-content: space-between; align-items: center; min-height: 80vh; }
-    .text-content { max-width: 48%; text-align: left; }
-    .image-box { width: 480px; height: 720px; aspect-ratio: unset; flex-shrink: 0; }
-}
