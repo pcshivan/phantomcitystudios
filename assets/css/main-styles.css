@@ -745,10 +745,10 @@ footer {
 .mobile-nav ul li a:hover {
     color: var(--accent-gold);
 }
-/* Hamburger animation to 'X' */
+/* Hamburger animation to 'X' 
 .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
 .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } */
 
 
 /* --- HERO & CONTENT SECTIONS --- */
