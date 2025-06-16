@@ -198,6 +198,23 @@ body {
     color: #ffffff;
 }
 
+
+
+/* --- INDEX PAGE (Mobile First) --- */
+.container {
+    display: flex;
+    flex-direction: column; /* Stacked on mobile */
+    align-items: center;
+    gap: 40px;
+    padding: 40px 20px;
+    max-width: 1300px;
+    margin: 20 auto;
+}
+.text-content { max-width: 100%; text-align: center; }
+.text-content h1 { font-size: clamp(2.5rem, 8vw, 4rem); color: var(--accent-gold); line-height: 1.2; }
+.text-content p { font-size: 1.2rem; line-height: 1.7; color: var(--text-secondary); }
+
+
 /* --- 3D TILT IMAGE BOX --- */
 .image-box {
     max-width: 480px;
@@ -221,22 +238,7 @@ body {
     box-shadow: 0 0 60px rgba(255, 204, 0, 0.7);
 }
 
-
-/* --- INDEX PAGE (Mobile First) --- */
-.container {
-    display: flex;
-    flex-direction: column; /* Stacked on mobile */
-    align-items: center;
-    gap: 40px;
-    padding: 40px 20px;
-    max-width: 1300px;
-    margin: 20 auto;
-}
-.text-content { max-width: 100%; text-align: center; }
-.text-content h1 { font-size: clamp(2.5rem, 8vw, 4rem); color: var(--accent-gold); line-height: 1.2; }
-.text-content p { font-size: 1.2rem; line-height: 1.7; color: var(--text-secondary); }
-
-.image-box {
+/*.image-box {
     width: 90%;
     max-width: 480px;
     height: 60vh;
@@ -249,7 +251,7 @@ body {
     transform-style: preserve-3d;
     perspective: 1000px;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
+}*/
 .image-box img { 
   position: relative; 
   width: 100%; 
