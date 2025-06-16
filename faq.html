@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frequently Asked Questions - Phantom City Studios</title>
+    <link rel="stylesheet" href="assets/css/phantom-styles.css" />   
+
     <link rel="stylesheet" href="assets/css/main-styles.css" />
-    <link rel="stylesheet" href="assets/css/phantom-styles.css" />    
+ 
 </head>
 <body>
 
@@ -20,10 +22,29 @@
                 <li><a href="faq.html">FAQ</a></li>                
                 <li><a href="contact.html">Contact</a></li>
             </ul>
+                        <!-- Hamburger Menu Button -->
+            <button class="hamburger-menu" aria-label="Open navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
         </nav>
     </header>
 
-    <main>
+
+        <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>                
+            <li><a href="services.html">Services</a></li>
+            <li><a href="ourteam.html">Our Team</a></li>
+            <li><a href="faq.html">FAQ</a></li>                
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <main class="page-container">
         <section class="hero-section">
             <h1>Clarity in Creativity</h1>
             <p class="subtitle">Your guide to a smooth, transparent, and successful collaboration with Phantom City Studios.</p>
@@ -68,6 +89,9 @@
         </div>
     </main>
 
+    <footer>
+        <p>© 2025 Phantom City Studios. All Rights Reserved.</p>
+    </footer>
     <script>
         // JS for FAQ Accordion
         document.querySelectorAll('.faq-item').forEach(item => {
@@ -91,8 +115,5 @@
     </script>
     
 
-    <footer>
-        <p>© 2025 Phantom City Studios. All Rights Reserved.</p>
-    </footer>
 </body>
 </html>
