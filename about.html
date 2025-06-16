@@ -1,131 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About | Phantom City Studios</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-<style>
-  .blob-wrapper {
-    position: fixed;
-    top: -100px;
-    left: -100px;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    pointer-events: none;
-    overflow: hidden;
-  }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Work | Phantom City Studios</title>
+    <link rel="stylesheet" href="assets/css/main-styles.css" />
+    <style>
+        /* Page-specific styles for a more polished look */
+        .work-container { 
+            padding: 40px 20px; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
 
-  .blob-wrapper svg {
-    width: 200%;
-    height: 200%;
-    filter: blur(100px);
-    mix-blend-mode: overlay;
-    transform: rotate(30deg);
-    opacity: 0.06;
-  }
+        /* Styling for the new ethos/vision section */
+        .ethos-section {
+            text-align: center;
+            padding: 60px 20px 80px 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
 
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+        .ethos-section h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--accent-white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
 
-  .text-content {
-    max-width: 80%;
-    padding-left: 60px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-  }
+        .ethos-section p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
 
-  .text-content.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+        /* Styling for the project list */
+        .work-list { 
+            list-style: none; 
+            padding: 0; 
+        }
 
-  h1 {
-    font-size: 3em;
-    color: #ffcc00;
-    transition: color 0.3s ease;
-  }
+        .work-item { 
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-  h1:hover {
-    color: #ffd700;
-  }
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
 
-  p {
-    font-size: 1.2em;
-    line-height: 1.5;
-  }
+        .work-item strong { 
+            font-size: 1.6rem; 
+            color: var(--accent-gold); 
+            display: block; 
+            margin-bottom: 10px;
+        }
 
-  a {
-    color: #66ccff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  a:hover {
-    color: #ffffff;
-  }
-
-  .cta-glow {
-    font-weight: bold;
-    font-size: 1.1em;
-    animation: glow 1.5s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff;
-    }
-    to {
-      text-shadow: 0 0 15px #ffffff, 0 0 30px #66ccff;
-    }
-  }
-</style>
+        .work-item em { 
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul style="list-style:none; display:flex; gap:2rem; justify-content:center;">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header class="main-header">
+        <nav>
+            <a href="index.html" class="logo">PHANTOM CITY STUDIOS</a>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>                
+                <li><a href="services.html">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>                
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Background Blob -->
-  <div class="blob-wrapper">
-    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#ffcc00">
-        <animate attributeName="d" dur="12s" repeatCount="indefinite"
-          values="M300,350 Q400,450 500,300 Q400,150 300,250 Q200,350 100,300 Q200,150 300,250 Z;
-                  M300,300 Q450,350 500,250 Q400,100 300,200 Q200,300 100,250 Q150,400 300,300 Z;
-                  M300,350 Q400,450 500,300 Q400,150 300,250 Q200,350 100,300 Q200,150 300,250 Z"/>
-      </path>
-    </svg>
-  </div>
+    <main class="work-container">
+        
+        <!-- New Ethos Section -->
+        <section class="ethos-section scroll-fade">
+            <h1>A Digital Dream Machine</h1>
+            <p>We are a futuristic creative powerhouse, transforming ideas into cinematic realities. By fusing AI visuals with original music and immersive storytelling, we build viral, visionary content that resonates with a GenZ-first world.</p>
+        </section>
 
-  <main class="container scroll-fade">
-    <div class="text-content visible">
-      <h1>About Phantom City Studios</h1>
-      <p><strong>Phantom City Studios</strong> is a futuristic creative powerhouse producing trendsetting content by fusing AI visuals, original music, and immersive storytelling. Founded by composer and AI filmmaker <strong>PC Shivan</strong>, we are a digital dream machine transforming ideas into cinematic realities.</p>
-      <p>We draw inspiration from Indian mythology, cyberpunk aesthetics, and emotional realism to build a GenZ-friendly brand that’s viral, visual, and visionary.</p>
-    </div>
-  </main>
+        <!-- Existing Projects List (with updated class names) -->
+        <ul class="work-list">
+            <li class="work-item scroll-fade">
+                <strong>Atma Prema</strong> — AI music video rooted in animal love and Vedic emotion.<br/>
+                <em>“A visual meditation. We’ve never seen anything like this. Stunning.”</em> — Animal Welfare NGO
+            </li>
+            <li class="work-item scroll-fade" style="transition-delay: 0.2s;">
+                <strong>Astraverse</strong> — Pan-Indian AI cinematic universe concept.<br/>
+                <em>“The script and scenes feel like a spiritual successor to Bahubali. With AI, no less!”</em>
+            </li>
+            <li class="work-item scroll-fade" style="transition-delay: 0.4s;">
+                <strong>SwarVerse</strong> — AI education platform blending raga and rhythm.<br/>
+                <em>“The first time I saw music theory come alive like this.”</em> — Music Educator
+            </li>
+        </ul>
+    </main>
 
-  <footer style="text-align:center; padding: 2rem;">© 2025 Phantom City Studios</footer>
+    <footer>
+        <p>© 2025 Phantom City Studios. All Rights Reserved.</p>
+    </footer>
+
+    <script src="assets/js/main-scripts.js"></script>
 </body>
 </html>
