@@ -1,125 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Services | Phantom City Studios</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <style>
-  .blob-wrapper {
-    position: fixed;
-    top: -100px;
-    left: -100px;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .blob-wrapper svg {
-    width: 200%;
-    height: 200%;
-    filter: blur(100px);
-    mix-blend-mode: overlay;
-    transform: rotate(30deg);
-    opacity: 0.06;
-  }
-
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-center;
-    min-height: 100vh;
-    text-align: center;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .text-content {
-    max-width: 90%;
-    padding-left: 60px;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-  }
-
-  .text-content.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  h1 {
-    font-size: 3em;
-    color: #ffcc00;
-    transition: color 0.3s ease;
-  }
-
-  h1:hover {
-    color: #ffd700;
-  }
-
-  p {
-    font-size: 1.2em;
-    line-height: 1.5;
-  }
-
-  a {
-    color: #66ccff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  a:hover {
-    color: #ffffff;
-  }
-
-  .cta-glow {
-    font-weight: bold;
-    font-size: 1.1em;
-    animation: glow 1.5s ease-in-out infinite alternate;
-  }
-
-  @keyframes glow {
-    from {
-      text-shadow: 0 0 5px #66ccff, 0 0 10px #66ccff;
-    }
-    to {
-      text-shadow: 0 0 15px #ffffff, 0 0 30px #66ccff;
-    }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Phantom City Studios</title>
+    <link rel="stylesheet" href="style.css"> <style>
+        /* Additional CSS for the new services page */
+        .services-hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: #111;
+            color: #fff;
+        }
+        .services-hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+        .services-hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .service-section {
+            padding: 60px 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        .service-section h2 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+        .service-section .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 50px;
+        }
+        .packages-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .package-card {
+            background: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 30px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+        .package-card h3 {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .package-card .tagline {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .package-card .price {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .package-card .price span {
+            font-size: 0.5em;
+            font-weight: normal;
+            color: #777;
+        }
+        .package-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        .package-card ul li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .package-card ul li:before {
+            content: '✓';
+            color: #28a745;
+            position: absolute;
+            left: 0;
+        }
+        .cta-button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <ul style="list-style:none; display:flex; gap:2rem; justify-content:center;">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="work.html">Work</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main class="container scroll-fade">
-    <div class="text-content visible">
-      <h1>Our Services</h1>
-      <p>We offer bold, imaginative solutions tailored for creators, startups, and future-forward brands:</p>
-      <ul>
-        <li><strong>AI Film & Video Production</strong> — Epic storytelling via Kling, Runway, Leonardo AI & Sora</li>
-        <li><strong>Original Music & Audio Design</strong> — Indian classical fusion, ambient, hip-hop & cinematic scores</li>
-        <li><strong>Interactive Tools</strong> — Real-time MIDI/audio software using Tone.js, WebAudio, TensorFlow.js</li>
-        <li><strong>Voice AI & Accents</strong> — Custom models for dubbing, accent coaching, and AI training</li>
-        <li><strong>Creative Branding & Strategy</strong> — Aesthetic identity, visual storytelling & audience resonance</li>
-      </ul>
-    </div>
-  </main>
+    <header>
+        </header>
 
-  <footer style="text-align:center; padding: 2rem;">© 2025 Phantom City Studios</footer>
+    <main>
+        <section class="services-hero">
+            <h1>Creative Solutions, Engineered for Impact.</h1>
+            <p>We are a full-service creative house specializing in next-generation media. From groundbreaking AI video to immersive audio landscapes, we provide scalable, world-class creative packages designed to elevate your brand and captivate your audience. Explore our services below.</p>
+        </section>
+
+        <section id="ai-video" class="service-section">
+            <h2>AI Video Production</h2>
+            <p class="subtitle">Harnessing the power of artificial intelligence to create visuals that were once impossible.</p>
+            <div class="packages-container">
+                <div class="package-card">
+                    <h3>The IGNITE Package</h3>
+                    <p class="tagline">Social-First Velocity</p>
+                    <p>Ideal for rapid, high-quality content for social media feeds and A/B testing.</p>
+                    <ul>
+                        <li>1 x 15-30 second video</li>
+                        <li>Based on your provided script/concept</li>
+                        <li>Single-pass AI generation</li>
+                        <li>One round of revisions</li>
+                        <li>4K resolution & licensed music</li>
+                    </ul>
+                    <div class="price">Starting at $1,500</div>
+                    <a href="contact.html?package=Ignite" class="cta-button">Select Package</a>
+                </div>
+                <div class="package-card">
+                    <h3>The ELEVATE Package</h3>
+                    <p class="tagline">Signature Brand Commercial</p>
+                    <p>Our most popular package. Perfect for creating a hero brand asset for your website, paid ads, and keynote presentations.</p>
+                    <ul>
+                        <li>1 x 30-60 second flagship commercial</li>
+                        <li>Full script development & storyboarding</li>
+                        <li>Multi-pass AI rendering for nuanced detail</li>
+                        <li>Two rounds of comprehensive revisions</li>
+                        <li>Cinematic editing & bespoke sound design</li>
+                    </ul>
+                    <div class="price">Starting at $2,800</div>
+                    <a href="contact.html?package=Elevate" class="cta-button">Select Package</a>
+                </div>
+                <div class="package-card">
+                    <h3>The DOMINION Package</h3>
+                    <p class="tagline">Complete Campaign Creative</p>
+                    <p>A full-service solution for brands looking to dominate a campaign launch with a suite of cohesive, high-end video assets.</p>
+                    <ul>
+                        <li>Suite of 3 video assets (Hero, Cut-down, Teaser)</li>
+                        <li>In-depth strategy & creative direction</li>
+                        <li>Advanced techniques (e.g., "digital actors")</li>
+                        <li>Unlimited production revisions</li>
+                        <li>Full agency-level post-production & bespoke score</li>
+                    </ul>
+                    <div class="price">Starting at $4,500</div>
+                    <a href="contact.html?package=Dominion" class="cta-button">Select Package</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="music-audio" class="service-section">
+            <h2>Original Music & Audio Design</h2>
+            <p class="subtitle">Crafting the sonic identity that makes your brand unforgettable.</p>
+            <div class="packages-container">
+                <div class="package-card">
+                    <h3>The SONIC SPARK Package</h3>
+                    <p class="tagline">Essential Audio Enhancement</p>
+                    <p>Perfect for podcasts, social videos, and presentations that need a professional audio lift.</p>
+                    <ul>
+                        <li>Custom-sourced library music</li>
+                        <li>Professional mixing & mastering for one piece of content (up to 5 mins)</li>
+                        <li>SFX sweetening</li>
+                        <li>One round of revisions</li>
+                        <li>Broadcast-ready audio files</li>
+                    </ul>
+                    <div class="price">Starting at $800</div>
+                    <a href="contact.html?package=Sonic-Spark" class="cta-button">Select Package</a>
+                </div>
+                <div class="package-card">
+                    <h3>The ANTHEM Package</h3>
+                    <p class="tagline">Your Brand's Signature Sound</p>
+                    <p>Develop a memorable, original theme or sonic logo that defines your brand's audio identity.</p>
+                    <ul>
+                        <li>1 x 30-60 second original brand theme</li>
+                        <li>Sonic logo/mnemonic creation</li>
+                        <li>Full buyout rights</li>
+                        <li>Two rounds of creative revisions</li>
+                        <li>Full stem delivery</li>
+                    </ul>
+                    <div class="price">Starting at $2,500</div>
+                    <a href="contact.html?package=Anthem" class="cta-button">Select Package</a>
+                </div>
+                <div class="package-card">
+                    <h3>The IMMERSION Package</h3>
+                    <p class="tagline">Complete Sonic World-Building</p>
+                    <p>A holistic audio solution for games, interactive experiences, or large-scale video projects.</p>
+                    <ul>
+                        <li>Full original score composition</li>
+                        <li>Comprehensive sound design (Foley, ambiences, SFX)</li>
+                        <li>Interactive audio implementation support</li>
+                        <li>Dedicated audio director</li>
+                        <li>Unlimited revisions during production</li>
+                    </ul>
+                    <div class="price">Starting at $5,000</div>
+                    <a href="contact.html?package=Immersion" class="cta-button">Select Package</a>
+                </div>
+            </div>
+        </section>
+
+        </main>
+
+    <footer>
+        </footer>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/YOUR_PROPERTY_ID/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
 </body>
 </html>
