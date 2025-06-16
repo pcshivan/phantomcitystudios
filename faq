@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions - Phantom City Studios</title>
+    <link rel="stylesheet" href="assets/css/main-styles.css">
+    <link rel="stylesheet" href="assets/css/phantom-styles.css">    
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">PHANTOM CITY STUDIOS</a>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>                
+                <li><a href="services.html">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+                <li><a href="faq.html">FAQ</a></li>                
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1>Clarity in Creativity</h1>
+            <p class="subtitle">Your guide to a smooth, transparent, and successful collaboration with Phantom City Studios.</p>
+        </section>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">How does your AI-driven process differ from traditional production?</div>
+                <div class="faq-answer">
+                    <p>Our process leverages AI for unprecedented speed, scale, and creative exploration. Unlike traditional methods that are linear and often slow, we can generate multiple visual concepts, test character designs, and iterate on scenes in a fraction of the time. This means we can focus more resources on high-level creative direction and refinement, giving you more innovative options and a faster path to a stunning final product. It's not about replacing artists; it's about empowering them with better tools.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is "Intellectual Property (IP)" and who owns the final work?</div>
+                <div class="faq-answer">
+                    <p>Upon final payment for any project, <strong>you, the client, own 100% of the rights to the final, delivered assets.</strong> This is a full buyout. You can use it on any platform, in any medium, forever, without any further fees to us. We retain the right to use the work in our own portfolio for promotional purposes, which is a standard industry practice and helps us attract more great clients like you. All the underlying AI models, internal tools, or non-exclusive assets (like licensed music) remain our property.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do you ensure brand consistency with AI-generated content?</div>
+                <div class="faq-answer">
+                    <p>This is a critical part of our workflow. We achieve brand consistency through several methods:</p>
+                    <ul>
+                        <li><strong>Bespoke Digital Actors:</strong> For our 'DOMINION' package and above, we can create and train models on specific characters or "digital actors" to ensure their appearance is consistent across all assets.</li>
+                        <li><strong>Strict Style Guides:</strong> We train our models on your brand's specific color palettes, aesthetic principles, and style guides.</li>
+                        <li><strong>Human-in-the-Loop Curation:</strong> AI generates options; our creative directors and artists make the final selections and refinements. Every single frame is reviewed to ensure it aligns perfectly with your brand identity.</li>
+                    </ul>
+                </div>
+            </div>
+             <div class="faq-item">
+                <div class="faq-question">Can you work with our existing creative brief and assets?</div>
+                <div class="faq-answer">
+                    <p>Absolutely. We are built to be flexible. We can integrate seamlessly with your in-house team or external agencies. Whether you have a fully-fleshed-out script, a simple concept, existing brand assets, or just a goal you want to achieve, we can plug into your workflow at any stage.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What does "unlimited revisions" in the Dominion package really mean?</div>
+                <div class="faq-answer">
+                    <p>It means we are committed to getting it right, without nickel-and-diming you. During the designated production phase of the project, we allow for unlimited rounds of feedback and changes to the creative work being generated. This is designed to foster experimentation and ensure the final output is perfect. This "unlimited" phase concludes once we move to the final post-production (sound mixing, final color grade), after which revisions are handled on a more structured basis.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // JS for FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    a.style.maxHeight = '0';
+                    a.style.padding = '0 20px';
+                });
+                if (item.classList.contains('active')) {
+                    const answer = item.querySelector('.faq-answer');
+                    answer.style.maxHeight = answer.scrollHeight + 40 + "px";
+                    answer.style.padding = "20px";
+                }
+            });
+        });
+    </script>
+    
+
+    <footer>
+        <p>© 2025 Phantom City Studios. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
