@@ -457,8 +457,14 @@
 
         } catch (error) {
             console.error('Error sending message:', error);
+        
             document.getElementById('phantom-chat-messages').removeChild(loadingMessage); // Remove loading indicator
-            displayMessage("Oops! It seems I'm having trouble connecting. Please try again in a moment.", 'agent');
+        
+            displayMessage(
+                `All our support staff are currently assisting other clients. <br>
+                Please feel free to <a href="https://phantomcitystudios.com/contact" target="_blank" style="color:#007bff; text-decoration:underline;">contact us directly here</a>. We’ll be right with you!`,
+                'agent'
+            );
         }
     }
 
