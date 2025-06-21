@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Contact - Phantom City Studios</title>
     <link rel="stylesheet" href="assets/css/main-styles.css" />
-    <link rel="stylesheet" href="assets/css/phantom-styles.css" />    
+    <link rel="stylesheet" href="assets/css/phantom-styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
     <header class="main-header">
@@ -13,13 +14,12 @@
             <a href="index.html" class="logo">PHANTOM CITY STUDIOS</a>
             <ul>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>                
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="ourteam.html">Our Team</a></li>
-                <li><a href="faq.html">FAQ</a></li>                
+                <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <!-- Hamburger Menu Button -->
             <button class="hamburger-menu" aria-label="Open navigation menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -28,18 +28,18 @@
         </nav>
     </header>
 
-
-        <!-- Mobile Navigation Overlay -->
+    <!-- Mobile Navigation Overlay -->
     <div class="mobile-nav">
         <ul>
             <li><a href="about.html">About Us</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>                
+            <li><a href="portfolio.html">Portfolio</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="ourteam.html">Our Team</a></li>
-            <li><a href="faq.html">FAQ</a></li>                
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
+
     <main class="contact-container">
         <div class="contact-grid scroll-fade">
             <!-- Left Column: Info & Social Proof -->
@@ -48,24 +48,23 @@
                 <p>We partner with ambitious brands and visionaries to create work that resonates. Whether you have a detailed brief or a spark of an idea, we're here to help shape it. Let us know how we can help.</p>
                 <ul class="contact-details">
                     <li>
-                        <i class="icon solid fa-envelope"></i>
-                        <a href="mailto:phantomcitystudios.com@gmail.com">contact@phantomcitystudios.com</a>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contact@phantomcitystudios.com">contact@phantomcitystudios.com</a>
                     </li>
                     <li>
-                        <i class="icon solid fa-map-marker-alt"></i>
+                        <i class="fas fa-map-marker-alt"></i>
                         <span>Chennai, India | Servicing Globally</span>
                     </li>
                 </ul>
-                 <div class="contact-socials">
-                    <a href="https://www.youtube.com/@phantomcitystudios" target="_blank" class="icon brands fa-youtube"><span class="label">YouTube</span></a>
-                    <a href="https://www.instagram.com/phantomcitystudiosindia?igsh=MTNyb2JvZGJ2bWlyZQ%3D%3D&utm_source=qr" class="icon brands fa-imstagram"><span class="label">Instagram</span></a>
-                    <a href="https://www.twitter.com/phantomcitystudiosindia" class="icon brands fa-twitter"><span class="label">Twitter</span></a>
+                <div class="contact-socials">
+                    <a href="https://www.youtube.com/@phantomcitystudios" target="_blank" class="fab fa-youtube" aria-label="YouTube"></a>
+                    <a href="https://www.instagram.com/phantomcitystudiosindia?igsh=MTNyb2JvZGJ2bWlyZQ%3D%3D&utm_source=qr" target="_blank" class="fab fa-instagram" aria-label="Instagram"></a>
+                    <a href="https://www.twitter.com/phantomcitystudiosindia" target="_blank" class="fab fa-twitter" aria-label="Twitter"></a>
                 </div>
             </div>
 
             <!-- Right Column: The Form -->
             <div class="contact-form-container">
-                <!-- The action attribute is now set dynamically by the script below -->
                 <form id="contact-form" action="" method="POST">
                     <div class="form-group">
                         <label for="full-name">Full Name</label>
@@ -98,7 +97,7 @@
                                 <option value="Voice-Clone">VOICE CLONE</option>
                                 <option value="Voice-AccentSync">ACCENT SYNC</option>
                                 <option value="Voice-Architect">VOCAL ARCHITECT</option>
-                            </optgroup>                            
+                            </optgroup>
                             <option value="General-Inquiry">A General Inquiry</option>
                         </select>
                     </div>
@@ -118,25 +117,17 @@
 
     <script src="assets/js/main-scripts.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // --- CONFIGURATION ---
-            // Define your Formspree endpoint URL here.
-            // This is the ONLY place you need to change the URL.
-            const FORM_ENDPOINT = "https://formspree.io/f/xldnnovk"; // <-- PASTE YOUR FORM SPREE URL HERE
-
-            // Assign the endpoint to the form's action attribute
+        document.addEventListener('DOMContentLoaded', function () {
+            const FORM_ENDPOINT = "https://formspree.io/f/xldnnovk";
             const contactForm = document.getElementById('contact-form');
             if (contactForm) {
                 contactForm.setAttribute('action', FORM_ENDPOINT);
             }
 
-            // --- Pre-fill form from URL parameter ---
             try {
                 const urlParams = new URLSearchParams(window.location.search);
                 const selectedPackage = urlParams.get('package');
                 const serviceSelect = document.getElementById('service-selection');
-                
                 if (selectedPackage && serviceSelect.querySelector(`[value="${selectedPackage}"]`)) {
                     serviceSelect.value = selectedPackage;
                 }
@@ -146,7 +137,5 @@
         });
     </script>
     <script src="assets/js/phantomcity_chat_widget.js"></script>
-
 </body>
 </html>
-
