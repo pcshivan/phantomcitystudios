@@ -76,6 +76,106 @@
 
     <script src="assets/js/main-scripts.js"></script>
     <script src="assets/js/phantomcity_chat_widget.js"></script>
+    <script>
+        (function() {
+            const masterclassWidgetHTML = `
+                <div id="ai-masterclass-widget" class="masterclass-widget">
+                    <a href="masterclass/ai-masterclass.html" class="widget-content">
+                        <span class="widget-text">AI Masterclass</span>
+                        <span class="widget-cta">Enroll Now!</span>
+                    </a>
+                </div>
+            `;
+
+            const masterclassWidgetCSS = `
+                /* AI Masterclass Widget Styling */
+                .masterclass-widget {
+                    position: fixed;
+                    bottom: 20px;
+                    left: 20px;
+                    z-index: 999; /* Ensure it's above other content but below chat */
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+                    border-radius: 12px;
+                    overflow: hidden;
+                    animation: pulse-glow 2s infinite ease-in-out; /* Blinking/pulsing animation */
+                }
+
+                .masterclass-widget .widget-content {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background: linear-gradient(45deg, #A020F0, #D050FF); /* Shiny purple gradient */
+                    color: #fff;
+                    text-decoration: none;
+                    padding: 15px 20px;
+                    min-width: 150px;
+                    text-align: center;
+                    transition: transform 0.2s ease;
+                }
+
+                .masterclass-widget .widget-content:hover {
+                    transform: translateY(-3px) scale(1.02);
+                    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+                }
+
+                .masterclass-widget .widget-text {
+                    font-size: 1.1em;
+                    font-weight: 700;
+                    margin-bottom: 5px;
+                    letter-spacing: 0.5px;
+                    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Subtle text glow */
+                }
+
+                .masterclass-widget .widget-cta {
+                    font-size: 0.95em;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background for CTA */
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    border: 1px solid rgba(255, 255, 255, 0.3);
+                    transition: background-color 0.2s ease;
+                }
+
+                .masterclass-widget .widget-content:hover .widget-cta {
+                    background-color: rgba(0, 0, 0, 0.4);
+                }
+
+                /* Blinking/Pulsing Animation Keyframes */
+                @keyframes pulse-glow {
+                    0% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.1); }
+                    50% { box-shadow: 0 0 25px rgba(160, 32, 240, 0.8), 0 0 40px rgba(160, 32, 240, 0.6); border: 1px solid rgba(255,255,255,0.8); }
+                    100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255,255,255,0.1); }
+                }
+
+                /* Responsive adjustments */
+                @media (max-width: 768px) {
+                    .masterclass-widget {
+                        bottom: 15px;
+                        left: 15px;
+                        min-width: 120px;
+                    }
+                    .masterclass-widget .widget-content {
+                        padding: 12px 15px;
+                    }
+                    .masterclass-widget .widget-text {
+                        font-size: 1em;
+                    }
+                    .masterclass-widget .widget-cta {
+                        font-size: 0.85em;
+                    }
+                }
+            `;
+
+            // Inject HTML
+            document.body.insertAdjacentHTML('beforeend', masterclassWidgetHTML);
+
+            // Inject CSS
+            const styleTag = document.createElement('style');
+            styleTag.innerHTML = masterclassWidgetCSS;
+            document.head.appendChild(styleTag);
+        })();
 
 </body>
 </html>
