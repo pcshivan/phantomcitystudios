@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You for Enrolling! - Phantom City Studios AI Masterclass</title>
+    <meta name="description" content="Thank you for enrolling in the Phantom City Studios AI Masterclass. Your enrollment details are confirmed, and we will contact you shortly.">
+
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="ai-masterclass.css"> <style>
+        /* Specific styling for the thanks page */
+        .thank-you-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh; /* Adjust as needed */
+            text-align: center;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            padding: 60px 20px;
+        }
+
+        .thank-you-section h1 {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .thank-you-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .confirmation-details {
+            background-color: var(--background-medium);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .confirmation-details h2 {
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .confirmation-details p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .confirmation-details p strong {
+            color: var(--text-light); /* Ensure strong text is visible */
+            display: inline-block;
+            min-width: 150px; /* Align labels */
+        }
+
+        .back-to-home {
+            margin-top: 40px;
+        }
+
+        .back-to-home .cta-button {
+            padding: 15px 30px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <header class="hero-section" style="min-height: 100px; padding: 20px 0;">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">PHANTOM CITY STUDIOS</a>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="ourteam.html">Our Team</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="thank-you-section">
+            <div class="container">
+                <h1>🎉 Enrollment Confirmed! 🎉</h1>
+                <p>Thank you for enrolling in the Phantom City Studios AI Masterclass. Your spot is secured!</p>
+                <p>We have successfully received your details and will contact you shortly via email with further instructions, payment information, and pre-course materials.</p>
+
+                <div class="confirmation-details">
+                    <h2>Your Enrollment Details:</h2>
+                    <div id="enrollment-info">
+                        <p><strong>Full Name:</strong> <span id="display-name">N/A</span></p>
+                        <p><strong>Email:</strong> <span id="display-email">N/A</span></p>
+                        <p><strong>Phone:</strong> <span id="display-phone">N/A</span></p>
+                        <p><strong>Profession:</strong> <span id="display-profession">N/A</span></p>
+                        <p><strong>Preferred Date:</strong> <span id="display-date">N/A</span></p>
+                        <p><strong>Preferred Time:</strong> <span id="display-time">N/A</span></p>
+                    </div>
+                    <p style="margin-top: 20px; font-style: italic;">Please check your inbox (and spam folder) for our confirmation email.</p>
+                </div>
+
+                <div class="back-to-home">
+                    <a href="../index.html" class="cta-button primary-cta">Back to Home Page</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Phantom City Studios. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://phantomcitystudios.com/privacy-policy">Privacy Policy</a>
+                <a href="https://phantomcitystudios.com/terms-of-service">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+
+            // Function to get and decode parameter, with a fallback
+            const getParam = (paramName, defaultValue = 'N/A') => {
+                const value = params.get(paramName);
+                return value ? decodeURIComponent(value.replace(/\+/g, ' ')) : defaultValue;
+            };
+
+            // Populate the display elements
+            document.getElementById('display-name').textContent = getParam('Full Name');
+            document.getElementById('display-email').textContent = getParam('email'); // Use 'email' as per form's name
+            document.getElementById('display-phone').textContent = getParam('Phone Number');
+            document.getElementById('display-profession').textContent = getParam('Profession/Interest');
+            document.getElementById('display-date').textContent = getParam('Preferred Date');
+            document.getElementById('display-time').textContent = getParam('Preferred Time Slot');
+
+            // Optionally, if no parameters are found (e.g., direct access), hide the details
+            if (!params.toString()) {
+                document.getElementById('enrollment-info').innerHTML = '<p>No enrollment details found. Please try enrolling again.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

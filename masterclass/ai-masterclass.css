@@ -1,0 +1,615 @@
+/* ai-masterclass.css */
+
+/* --- Global Styles & Variables (Adjust to match your site's theme) --- */
+:root {
+    --primary-color: #A020F0; /* Phantom City purple accent */
+    --secondary-color: #7B00B0; /* Darker purple for hover/active */
+    --background-dark: #121212; /* Very dark background */
+    --background-medium: #1A1A1A; /* Slightly lighter dark background */
+    --text-light: #E0E0E0; /* Light text for dark backgrounds */
+    --text-medium: #B0B0B0; /* Medium grey text */
+    --border-color: #333; /* Subtle border color */
+    --form-input-bg: #282828; /* Form input background */
+    --error-color: #FF6B6B; /* Error message color */
+    --success-color: #4CAF50; /* Success message color */
+
+    --font-family-primary: 'Montserrat', sans-serif; /* Your site's primary font */
+    --border-radius-soft: 8px;
+    --box-shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    line-height: 1.6;
+    color: var(--text-light);
+    background-color: var(--background-dark);
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 3.5em;
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: var(--text-light); /* Feature titles can be lighter */
+}
+
+p {
+    margin-bottom: 15px;
+    color: var(--text-medium);
+}
+
+.section-description {
+    text-align: center;
+    max-width: 800px;
+    margin: -30px auto 40px auto; /* Adjust margin to fit between h2 and grid */
+    font-size: 1.1em;
+    color: var(--text-light);
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+/* --- Buttons --- */
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.primary-cta {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: var(--box-shadow-subtle);
+}
+
+.primary-cta:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.secondary-cta {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.secondary-cta:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow-subtle);
+}
+
+/* --- Header / Hero Section --- */
+.hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/img/hero-bg.jpg') no-repeat center center/cover; /* Updated Hero BG Path */
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding-top: 20px; /* Space for nav */
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(160, 32, 240, 0.1) 0%, transparent 70%); /* Subtle glow effect */
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.logo img {
+    height: 50px; /* Adjust logo size */
+    filter: brightness(1.2); /* Make logo pop on dark background */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 0;
+}
+
+.hero-content .subtitle {
+    font-size: 1.4em;
+    color: var(--text-light);
+    margin-bottom: 40px;
+}
+
+.masterclass-details {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.detail-item {
+    background-color: rgba(26, 26, 26, 0.7); /* Semi-transparent dark background */
+    padding: 15px 25px;
+    border-radius: var(--border-radius-soft);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--box-shadow-subtle);
+}
+
+.detail-item .icon {
+    font-size: 1.8em;
+    color: var(--primary-color);
+}
+
+.detail-item p {
+    margin: 0;
+    font-size: 1.1em;
+    color: var(--text-light);
+}
+
+.enrollment-note {
+    font-size: 0.9em;
+    color: var(--text-medium);
+    margin-top: 20px;
+    font-style: italic;
+}
+
+/* --- Section Styles --- */
+.bg-darker {
+    background-color: var(--background-medium);
+}
+
+.bg-gradient {
+    background: linear-gradient(45deg, var(--background-medium), var(--background-dark));
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* --- Feature Grid (Why This Masterclass) --- */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.feature-item {
+    background-color: var(--background-medium);
+    padding: 30px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-subtle);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.feature-item h3 {
+    color: var(--primary-color); /* Highlight feature titles */
+    margin-bottom: 10px;
+}
+
+/* --- Master Topics Grid (What You Will Master) --- */
+.master-topics-grid, .module-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.master-topic-item, .module-item {
+    background-color: var(--background-medium);
+    padding: 30px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-subtle);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.master-topic-item:hover, .module-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.master-topic-item h3, .module-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.module-item ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.module-item li {
+    color: var(--text-medium);
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.module-item li::before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+
+/* --- Audience List (Who Should Attend) --- */
+.audience-list ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted for 8 items */
+    gap: 15px;
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.audience-list li {
+    background-color: var(--background-medium);
+    padding: 15px 20px;
+    border-radius: var(--border-radius-soft);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    color: var(--text-light);
+    transition: background-color 0.3s ease;
+}
+
+.audience-list li:hover {
+    background-color: rgba(160, 32, 240, 0.1); /* Subtle hover effect */
+}
+
+.audience-list li::before {
+    content: '→'; /* Custom bullet point */
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* --- Testimonials --- */
+.testimonial-carousel {
+    display: flex;
+    overflow-x: auto; /* Enable horizontal scrolling for multiple testimonials */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 30px;
+    padding-bottom: 20px; /* Space for scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-dark);
+}
+
+.testimonial-carousel::-webkit-scrollbar {
+    height: 8px;
+}
+.testimonial-carousel::-webkit-scrollbar-track {
+    background: var(--background-dark);
+    border-radius: 10px;
+}
+.testimonial-carousel::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 2px solid var(--background-dark);
+}
+
+
+.testimonial-item {
+    flex: 0 0 400px; /* Fixed width for each testimonial */
+    scroll-snap-align: start;
+    background-color: var(--background-medium);
+    padding: 30px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-subtle);
+    border: 1px solid var(--border-color);
+    min-width: 300px; /* Ensure it's not too small on mobile */
+}
+
+.testimonial-item p {
+    font-style: italic;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: var(--text-light);
+}
+
+.testimonial-item .author {
+    display: block;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* --- Enrollment Form --- */
+.enrollment-call {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--text-light);
+}
+
+.enrollment-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--background-medium);
+    padding: 40px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--box-shadow-subtle);
+    border: 1px solid var(--border-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group select { /* Added select element to styling */
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: var(--form-input-bg);
+    color: var(--text-light);
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* For select dropdown arrow customization */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23E0E0E0%22%20d%3D%22M287%2069.9a14.7%2014.7%200%200%00%20-21.2%200L146.2%20190.7%2026.6%2069.9a14.7%2014.7%200%200%00%20-21.2%200%2014.7%2014.7%200%200%00%200%2021.2l129.5%20129.5a14.7%2014.7%200%200%00%2021.2%200L287%2091.1a14.7%2014.7%200%200%00%200-21.2z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    padding-right: 40px; /* Make space for the custom arrow */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="tel"]:focus,
+.form-group select:focus { /* Added select element to focus styling */
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(160, 32, 240, 0.3);
+}
+
+.form-group input::placeholder {
+    color: var(--text-medium);
+    opacity: 0.7;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 0.85em;
+    margin-top: 5px;
+    display: block;
+    height: 18px; /* Maintain space */
+}
+
+.form-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: var(--border-radius-soft);
+    text-align: center;
+    font-weight: 600;
+    display: none; /* Hidden by default */
+}
+
+.form-message.success {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.form-message.error {
+    background-color: rgba(255, 107, 107, 0.2);
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.form-message.info {
+    background-color: rgba(160, 32, 240, 0.1); /* Lighter purple background for info */
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+
+/* --- Footer --- */
+footer {
+    background-color: var(--background-medium);
+    color: var(--text-medium);
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-links {
+    margin-top: 15px;
+}
+
+.footer-links a {
+    color: var(--text-medium);
+    margin: 0 15px;
+    font-size: 0.9em;
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1.2em;
+    }
+
+    .masterclass-details {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .detail-item {
+        width: 100%;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .master-topics-grid, .module-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .audience-list ul {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-carousel {
+        flex-wrap: nowrap; /* Keep it a carousel, but allow full width items */
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    .testimonial-item {
+        flex: 0 0 90%; /* Take up most of the screen width */
+        margin-right: 20px; /* Space between items */
+    }
+
+    .enrollment-form {
+        padding: 30px 20px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-content .subtitle {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 0.9em;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+}
