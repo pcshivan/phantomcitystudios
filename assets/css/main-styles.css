@@ -4,7 +4,7 @@
   Author: Gemini AI
 */
 
-/* --- FONT & GLOBAL IMPORTS --- 
+/* --- FONT & GLOBAL IMPORTS ---
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 @import url('fontawesome-all.min.css'); Ensure this path is correct */
 
@@ -145,6 +145,31 @@ body {
     transform-origin: bottom left;
 }
 
+/* New: Styling for the Phantom Agents navigation link */
+.main-header nav ul li .agents-link {
+    background: linear-gradient(90deg, var(--accent-blue) 0%, #8a2be2 100%); /* Blue to purple gradient */
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #fff; /* White text for contrast */
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); /* Blue glow */
+    transition: all 0.3s ease;
+    animation: pulse-agents-link 2s infinite alternate; /* Pulsing effect */
+}
+
+.main-header nav ul li .agents-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--primary-glow); /* Stronger glow on hover */
+    background: linear-gradient(90deg, #8a2be2 0%, var(--accent-blue) 100%); /* Reverse gradient on hover */
+}
+
+@keyframes pulse-agents-link {
+    0% { box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
+    50% { box-shadow: 0 0 25px rgba(0, 191, 255, 0.8), 0 0 40px rgba(0, 191, 255, 0.6); }
+    100% { box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); }
+}
+
+
 /* --- HERO & CONTENT SECTIONS --- */
 .container {
     display: flex;
@@ -207,7 +232,6 @@ body {
     align-items: center;
     gap: 40px;
     padding: 40px 20px;
-    max-width: 1300px;
     margin: 20 auto;
 }
 .text-content { max-width: 100%; text-align: center; }
@@ -219,7 +243,7 @@ body {
 .image-box {
     max-width: 400px;
     width: 90%;
-    /* max-height: 720px; */ 
+    /* max-height: 720px; */
     height: auto;
     aspect-ratio: 2 / 3;
     max-height: 80vh;
@@ -253,7 +277,7 @@ body {
     perspective: 1000px;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
 }*/
-.image-box img { 
+.image-box img {
     position: absolute; /* CRITICAL: This makes all images stack on top of each other */
     top: 0;
     left: 0;
@@ -263,8 +287,8 @@ body {
     transition: opacity 1.2s ease-in-out;
     opacity: 0; /* All images are invisible by default */
 }
-.image-box img.active { 
-  opacity: 1; 
+.image-box img.active {
+  opacity: 1;
 }
 
 
@@ -312,24 +336,11 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    .main-header nav ul {
-        display: none; /* Simplification for this example. A real site needs a JS-based mobile menu. */
-    }
-    .text-content h1 {
-        font-size: 2.5rem;
-    }
-    .text-content p {
-        font-size: 1.1rem;
-    }
-}
-
-/* === TABLET, IPAD & DESKTOP STYLES (Progressive Enhancement) === */
 @media (min-width: 768px) {
     .hamburger-menu { display: none; }
     .main-header .desktop-nav { display: flex; list-style: none; gap: 45px; margin: 0; padding: 0; }
     .main-header .desktop-nav li a { color: var(--text-primary); text-decoration: none; font-size: 1rem; }
-    
+
     .container { flex-direction: row; justify-content: space-between; align-items: center; min-height: 80vh; }
     .text-content { max-width: 48%; text-align: left; }
     .image-box { width: 480px; height: 720px; aspect-ratio: unset; flex-shrink: 0; }
@@ -737,9 +748,9 @@ footer {
 }
 
 
-/* --- MOBILE HAMBURGER MENU --- 
+/* --- MOBILE HAMBURGER MENU ---
 .hamburger-menu {
-    display: block; 
+    display: block;
     cursor: pointer;
     z-index: 1001;
     background: none;
@@ -796,7 +807,7 @@ footer {
 /* Hamburger animation to 'X'
 .hamburger-menu.is-active .bar:nth-child(2) { opacity: 0; }
 .hamburger-menu.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); } */
+.hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 
 /* --- HERO & CONTENT SECTIONS --- */
@@ -870,8 +881,5 @@ footer {
 .hamburger-menu.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
 
-
-
 /* --- FOOTER --- */
 footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 60px; }
-
