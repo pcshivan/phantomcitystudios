@@ -1,0 +1,482 @@
+/* phantom-agents.css */
+
+/* Import root variables from main-styles.css for consistency */
+/* Ensure main-styles.css or phantom-styles.css is linked BEFORE this file in HTML */
+:root {
+    /* These variables should ideally be defined in a global stylesheet like main-styles.css */
+    /* and imported or inherited. Duplicating here for clarity if not universally applied. */
+    --primary-glow: rgba(0, 191, 255, 0.7); /* Bright blue glow */
+    --accent-blue: #00BFFF; /* DeepSkyBlue */
+    --gold-glow: rgba(255, 204, 0, 0.6); /* Gold glow */
+    --accent-gold: #ffcc00; /* Bright gold */
+    --background-dark: #0a0a0a; /* Main dark background */
+    --background-gradient-end: #111; /* Slightly lighter dark for gradients */
+    --surface-color: #181818; /* Card/section background */
+    --text-primary: #e9e9e9; /* Light text for dark backgrounds */
+    --text-secondary: #a0a0a0; /* Secondary light text */
+    --border-color: #2a2a2a; /* Dark border color */
+}
+
+/* General Body Styling - Adopt dark theme */
+body {
+    font-family: 'Inter', sans-serif; /* Assuming Inter is your main font */
+    line-height: 1.6;
+    color: var(--text-primary); /* Primary text color */
+    background: linear-gradient(to bottom, var(--background-dark), var(--background-gradient-end)); /* Dark gradient background */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Hero Section Enhancements - Dark theme with vibrant glow */
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg, var(--background-dark) 0%, #1a1a1a 100%); /* Darker gradient */
+    color: var(--text-primary);
+    padding: 80px 20px;
+    text-align: center;
+    overflow: hidden;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* More pronounced shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Canvas for background animation in hero section */
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Behind content */
+    pointer-events: none; /* Allow clicks to pass through */
+    opacity: 0.3; /* Subtle background effect */
+}
+
+.hero-content {
+    max-width: 900px;
+    z-index: 1; /* Above canvas */
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    line-height: 1.2;
+    text-shadow: 0 0 15px var(--primary-glow); /* Enhanced glow */
+    color: var(--accent-blue); /* Use accent color for main title */
+}
+
+.hero-section .tagline {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    color: var(--text-secondary); /* Secondary text color */
+}
+
+.hero-graphic {
+    max-width: 600px;
+    width: 100%;
+    margin-top: 30px;
+    z-index: 1;
+}
+
+.hero-graphic .responsive-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); /* Darker shadow */
+    border: 2px solid var(--accent-blue); /* Subtle border */
+}
+
+/* Call to Action Buttons - Keep vibrant, add stronger glow */
+.cta-button {
+    display: inline-block;
+    background-color: var(--accent-gold); /* Gold for primary CTA */
+    color: #000; /* Black text for contrast */
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 20px rgba(255, 204, 0, 0.4); /* Gold glow shadow */
+    border: none; /* Remove default border */
+}
+
+.cta-button:hover {
+    background-color: #e6b800; /* Slightly darker gold on hover */
+    transform: translateY(-5px); /* More pronounced lift */
+    box-shadow: 0 10px 30px var(--gold-glow); /* Stronger gold glow */
+}
+
+.secondary-cta {
+    background-color: var(--black); /* Blue for secondary CTA */
+    box-shadow: 0 5px 20px rgba(0, 191, 255, 0.4); /* Blue glow shadow */
+}
+
+.secondary-cta:hover {
+    background-color: #009acd; /* Slightly darker blue on hover */
+    box-shadow: 0 10px 30px var(--primary-glow); /* Stronger blue glow */
+}
+
+/* Section Styling - Dark backgrounds, light text */
+section {
+    padding: 80px 20px; /* Increased padding */
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--background-dark); /* Default section background */
+    color: var(--text-primary);
+}
+
+.section-title {
+    font-size: 2.8em; /* Larger title */
+    color: var(--text-primary);
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle text glow */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 100px; /* Wider underline */
+    height: 5px; /* Thicker underline */
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold)); /* Gradient underline */
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); /* Glow on underline */
+}
+
+/* Agents Intro Section - Surface color background */
+.agents-intro-section {
+    background-color: var(--surface-color); /* Dark surface color */
+    border-radius: 25px;
+    margin-top: -30px;
+    position: relative;
+    z-index: 2;
+    padding-top: 80px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4); /* Stronger shadow */
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+.agents-intro-section p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 20px auto;
+    color: var(--text-secondary); /* Secondary text color */
+}
+
+/* Agent Gallery - Alternating dark background */
+.agent-gallery {
+    background-color: var(--background-dark); /* Dark background */
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.agent-card {
+    background-color: var(--surface-color); /* Dark surface color */
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); /* Darker shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    opacity: 0;
+    transform: translateY(20px);
+    border: 1px solid var(--border-color); /* Subtle border */
+}
+
+.agent-card.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.agent-card:hover {
+    transform: translateY(-15px); /* More lift on hover */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--primary-glow); /* Stronger glow on hover */
+    border-color: var(--accent-blue); /* Highlight border on hover */
+}
+
+.agent-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08); /* Subtle dark background for avatars */
+    margin-bottom: 20px;
+    border: 5px solid var(--border-color); /* Dark border */
+    box-shadow: 0 0 0 5px rgba(0, 191, 255, 0.2), 0 0 20px rgba(0, 191, 255, 0.4); /* Blue glow ring */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* For potential JS glow */
+}
+
+.agent-card:hover .agent-avatar {
+    transform: scale(1.1); /* More pronounced scale */
+    box-shadow: 0 0 0 5px var(--accent-blue), 0 0 30px var(--primary-glow); /* Brighter glow ring */
+}
+
+/* Specific Agent Avatar Styles (using emojis or simple shapes for now, with dark-friendly colors) */
+.phantom-ram { background-image: url('https://placehold.co/120x120/FFD700/0a0a0a?text=%F0%9F%A5%87'); background-color: #FFD700; }
+.phantom-sita { background-image: url('https://placehold.co/120x120/FF69B4/0a0a0a?text=%F0%9F%8C%BB'); background-color: #FF69B4; }
+.phantom-hanuman { background-image: url('https://placehold.co/120x120/FF4500/0a0a0a?text=%F0%9F%92%AA'); background-color: #FF4500; }
+.phantom-acharya { background-image: url('https://placehold.co/120x120/8A2BE2/0a0a0a?text=%F0%9F%A7%91%E2%80%8D%F0%9F%8C%AF'); background-color: #8A2BE2; }
+.phantom-bee { background-image: url('https://placehold.co/120x120/FFD700/0a0a0a?text=%F0%9F%90%9D'); background-color: #FFD700; }
+.phantom-squirrel { background-image: url('https://placehold.co/120x120/CD853F/0a0a0a?text=%F0%9F%90%BB'); background-color: #CD853F; }
+
+
+.agent-card h3 {
+    font-size: 1.8em;
+    color: var(--text-primary); /* Primary text color */
+    margin-bottom: 10px;
+}
+
+.agent-card .twitter-handle {
+    font-size: 0.9em;
+    color: var(--text-secondary); /* Secondary text color */
+    display: block;
+    margin-top: 5px;
+}
+
+.agent-card p {
+    font-size: 1em;
+    color: var(--text-secondary); /* Secondary text color */
+    flex-grow: 1;
+}
+
+
+.agent-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08); /* Subtle dark background for avatars */
+    margin-bottom: 20px;
+    border: 5px solid var(--border-color); /* Dark border */
+    box-shadow: 0 0 0 5px rgba(0, 191, 255, 0.2), 0 0 20px rgba(0, 191, 255, 0.4); /* Blue glow ring */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* For potential JS glow */
+    overflow: hidden; /* Ensure image stays within bounds */
+    display: flex; /* Use flexbox to center image */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.agent-avatar img {
+    width: 100%; /* Image fills the avatar div */
+    height: 100%; /* Image fills the avatar div */
+    object-fit: cover; /* Ensures the image covers the area without distortion, cropping if necessary */
+    border-radius: 50%; /* Ensure image is also circular */
+    display: block; /* Remove extra space below image */
+}
+
+
+
+/* What They Do Section - Alternating dark background */
+.what-they-do-section {
+    background-color: var(--surface-color); /* Dark surface color */
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border-top: 1px solid var(--border-color); /* Separator */
+    border-bottom: 1px solid var(--border-color); /* Separator */
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-item {
+    background-color: var(--background-dark); /* Darker background for features */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); /* Darker shadow */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.feature-item:hover {
+    transform: translateY(-8px); /* More lift */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-blue); /* Stronger blue glow */
+    border-color: var(--accent-blue); /* Highlight border */
+}
+
+.feature-item .icon-placeholder {
+    font-size: 3.5em; /* Larger icons */
+    margin-bottom: 20px;
+    color: var(--accent-gold); /* Gold icon color for contrast */
+    text-align: center;
+    text-shadow: 0 0 10px var(--gold-glow); /* Icon glow */
+}
+
+.feature-item h3 {
+    font-size: 1.5em;
+    color: var(--text-primary); /* Primary text color */
+    margin-bottom: 10px;
+}
+
+.feature-item p {
+    font-size: 1em;
+    color: var(--text-secondary); /* Secondary text color */
+}
+
+/* Vision Section - Surface color background */
+.vision-section {
+    background-color: var(--surface-color); /* Dark surface color */
+    padding-top: 80px;
+    padding-bottom: 80px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2); /* Darker shadow */
+}
+
+.vision-section p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: 20px auto 40px auto;
+    color: var(--text-secondary); /* Secondary text color */
+}
+
+.vision-section a {
+    color: var(--accent-blue); /* Accent blue for links */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.vision-section a:hover {
+    color: #fff; /* White on hover */
+    text-shadow: 0 0 10px var(--primary-glow); /* Glow on hover */
+}
+
+/* Footer - Inherit from main-styles.css, ensure consistency */
+footer {
+    background-color: var(--background-dark); /* Dark background */
+    color: var(--text-secondary); /* Secondary text color */
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--border-color); /* Subtle border */
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: var(--text-primary); /* Primary text color for links */
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent-blue); /* Accent blue on hover */
+    text-shadow: 0 0 8px var(--primary-glow); /* Glow on hover */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 15px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-section .tagline {
+        font-size: 1.2em;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .agents-grid, .features-grid {
+        grid-template-columns: 1fr; /* Stack columns on small screens */
+    }
+
+    .agent-card, .feature-item {
+        padding: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2em;
+    }
+
+    .hero-section .tagline {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .agent-card h3 {
+        font-size: 1.6em;
+    }
+
+    .feature-item h3 {
+        font-size: 1.3em;
+    }
+}
+
+/* Fade-in-up animation for cards */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Keyframe for subtle pulse glow */
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.4); }
+    50% { box-shadow: 0 0 20px 5px rgba(0, 191, 255, 0.8); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.4); }
+}
+
+/* Class to trigger pulse glow (can be added/removed by JS) */
+.flash-glow {
+    animation: pulseGlow 1.5s infinite alternate;
+}
