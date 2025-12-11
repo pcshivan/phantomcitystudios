@@ -1,5 +1,5 @@
 [build]
-  publish = "public"         # leave as your site uses; keep unchanged if you use GitHub Pages for frontend
+  publish = "private"         # leave as public as your site uses; keep unchanged if you use GitHub Pages for frontend
   functions = "netlify/functions"
 
 [[redirects]]
