@@ -1,0 +1,9 @@
+[build]
+  publish = "public"         # leave as your site uses; keep unchanged if you use GitHub Pages for frontend
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/convai/webhook"
+  to = "/.netlify/functions/convai-webhook"
+  status = 200
+  force = true
