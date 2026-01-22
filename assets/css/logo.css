@@ -210,7 +210,7 @@
 
   /* Shrink logo aggressively */
   .site-logo-img {
-    height: 96px !important;
+    height: 120px !important;
     transform: none !important;
     mask-image: none !important;
     -webkit-mask-image: none !important;
@@ -219,7 +219,7 @@
 
   /* Prevent overflow chaos */
   .logo-wrapper {
-    margin-right: 0.5rem;
+    margin-right: 0.4rem;
     align-items: center;
     overflow: visible;
   }
@@ -227,7 +227,7 @@
   /* Hamburger becomes primary control */
   .hamburger-menu {
     margin-left: auto;
-    padding: 0.5rem;
+    padding: 0.4rem;
     z-index: 500;
   }
 }
