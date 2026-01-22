@@ -189,7 +189,7 @@
 /* spacing between bars */
 /* Make dark logo visible on black header */
 .site-logo-img {
-  filter: brightness(1.2);
+  filter: brightness(0.7);
 }
 
 /* =========================================================
@@ -214,12 +214,12 @@
     transform: none !important;
     mask-image: none !important;
     -webkit-mask-image: none !important;
-    filter: brightness(1.1);
+    filter: brightness(0.7);
   }
 
   /* Prevent overflow chaos */
   .logo-wrapper {
-    margin-right: 0.4rem;
+    margin-right: 0.3rem;
     align-items: center;
     overflow: visible;
   }
@@ -254,7 +254,7 @@
   /* Reassert cinematic scale */
   .site-logo-img {
     height: 220px;              /* or your preferred size */
-    transform: scale(1.6);
+    transform: scale(1.8);
     transform-origin: center center;
     margin: 0;                 /* kill phantom margins */
     padding: 0;
