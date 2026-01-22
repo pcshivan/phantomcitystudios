@@ -186,4 +186,8 @@
 .hamburger-menu span:not(:last-child) {
   margin-bottom: 5px;
 }
-
+/* spacing between bars */
+/* Make dark logo visible on black header */
+.site-logo-img {
+  filter: brightness(1.2);
+}
