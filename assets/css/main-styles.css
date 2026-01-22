@@ -908,3 +908,15 @@ footer {
 
 /* --- FOOTER --- */
 footer { text-align: center; padding: 2rem; color: var(--text-secondary); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 60px; }
+
+/* =========================================================
+   MOBILE NAV OVERRIDES — FINAL AUTHORITY
+   ========================================================= */
+@media (max-width: 768px) {
+
+  .main-header .main-nav {
+    display: none !important;
+  }
+
+}
+
