@@ -184,7 +184,7 @@
 
 /* spacing between bars */
 .hamburger-menu span:not(:last-child) {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 /* spacing between bars */
 /* Make dark logo visible on black header */
