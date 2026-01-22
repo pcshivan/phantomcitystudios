@@ -66,101 +66,126 @@ body {
 }
 
 
-/* --- HEADER & NAVIGATION --- */
+/* --- HEADER & NAVIGATION (SURGICALLY MODIFIED) --- */
+
+/* Header container */
 .main-header {
     position: sticky;
     top: 0;
     z-index: 1002;
-    padding: 20px 5%;
+
+    /* IMPORTANT: do NOT pad header directly (logo.css controls geometry) */
     background-color: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
+
     border-bottom: 1px solid var(--border-color);
 }
 
-.main-header nav {
+/* Nav wrapper — aligns with existing HTML (.nav-wrapper) */
+.main-header .nav-wrapper {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    width: 100%;
+
     max-width: 1400px;
     margin: 0 auto;
+
+    /* spacing belongs here, not on header */
+    padding: 20px 5%;
+    box-sizing: border-box;
 }
 
+/* REMOVE text-logo styling (image logo is used instead)
+   Kept here as a no-op safeguard */
 .main-header .logo {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
-    z-index: 1001; /* Above mobile overlay */
+    display: none;
 }
+
+/* Desktop nav visibility handled elsewhere — keep neutral */
 .main-header .desktop-nav {
-    display: none; /* Hidden on mobile by default */
+    display: none;
 }
 
-.main-header .logo:hover {
-    color: var(--accent-gold);
-    text-shadow: 0 0 10px var(--gold-glow);
-}
-
-.main-header nav ul {
+/* Navigation list — mapped to .main-nav */
+.main-header .main-nav {
     list-style: none;
     display: flex;
-    gap: 45px;
+    align-items: center;
+
+    gap: 45px;                 /* Phantom spacing preserved */
     margin: 0;
     padding: 0;
 }
 
-.main-header nav ul li a {
+/* Nav links */
+.main-header .main-nav li a {
     color: var(--text-primary);
     text-decoration: none;
+
     font-weight: 400;
     font-size: 1rem;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
     padding-bottom: 5px;
     position: relative;
+
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-.main-header nav ul li a:hover {
+.main-header .main-nav li a:hover {
     color: var(--accent-blue);
     text-shadow: 0 0 8px var(--primary-glow);
 }
 
-.main-header nav ul li a::after {
+/* Underline animation (Phantom-style) */
+.main-header .main-nav li a::after {
     content: '';
     position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 1.5px;
-    bottom: -2px;
     left: 0;
+    bottom: -2px;
+
+    width: 100%;
+    height: 1.5px;
+
     background-color: var(--accent-blue);
+
+    transform: scaleX(0);
     transform-origin: bottom right;
     transition: transform 0.3s ease-out;
 }
 
-.main-header nav ul li a:hover::after {
+.main-header .main-nav li a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
 }
 
-/* New: Styling for the Phantom Agents navigation link */
-.main-header nav ul li .agents-link {
-    background: linear-gradient(90deg, var(--accent-blue) 0%, #8a2be2 100%); /* Blue to purple gradient */
+/* --- Phantom Agents CTA link (unchanged visually, scoped safely) --- */
+.main-header .main-nav li .agents-link {
+    background: linear-gradient(
+        90deg,
+        var(--accent-blue) 0%,
+        #8a2be2 100%
+    );
+
     padding: 8px 15px;
     border-radius: 20px;
+
     font-weight: 600;
-    color: #fff; /* White text for contrast */
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5); /* Blue glow */
+    color: #ffffff;
+
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.5);
     transition: all 0.3s ease;
-    animation: pulse-agents-link 2s infinite alternate; /* Pulsing effect */
+
+    animation: pulse-agents-link 2s infinite alternate;
 }
 
-.main-header nav ul li .agents-link:hover {
+.main-header .main-nav li .agents-link:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px var(--primary-glow); /* Stronger glow on hover */
-    background: linear-gradient(90deg, #8a2be2 0%, var(--accent-blue) 100%); /* Reverse gradient on hover */
+    box-shadow: 0 0 25px var(--primary-glow);
+    background: linear-gradient(
+        90deg,
+        #8a2be2 0%,
+        var(--accent-blue) 100%
+    );
 }
 
 @keyframes pulse-agents-link {
