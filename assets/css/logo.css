@@ -1,88 +1,170 @@
-/* assets/css/logo.css — Phantom City Studios: Logo & header safety rules */
+/* =========================================================
+   Phantom City Studios
+   Header + Logo: Zero-gap, logo-driven geometry
+   ========================================================= */
 
-/* visually-hidden (keeps text in DOM for SEO & SR, hides it visually) */
+/* ---------- Accessibility / SEO ---------- */
 .visually-hidden {
   position: absolute !important;
+  inset: 0 !important;
   width: 1px !important;
   height: 1px !important;
-  padding: 0 !important;
   margin: -1px !important;
+  padding: 0 !important;
   overflow: hidden !important;
-  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
   white-space: nowrap !important;
   border: 0 !important;
 }
 
-/* Ensure nav is flexible but non-invasive */
-.nav-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 0.5rem 1rem;
+/* ---------- Header container ---------- */
+.main-header {
+  position: relative;
   width: 100%;
-  box-sizing: border-box;
-}
-
-/* nav links group: allow them to wrap on narrow screens */
-.main-nav {
-  display: flex;
-  gap: 0.5rem;
-  list-style: none;
+  overflow: visible;                 /* allow logo overflow */
   margin: 0;
   padding: 0;
+  background-color: #000000;   /* pure white */
+
+}
+
+/* ---------- Navigation wrapper ---------- */
+.nav-wrapper {
+  position: relative;
+  display: flex;
+  align-items: stretch;              /* IMPORTANT: stretch children vertically */
+  width: 100%;
+
+  /* ZERO padding = ZERO gaps */
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
+  z-index: 150;
+  overflow: visible;
+}
+
+/* ---------- Navigation list ---------- */
+.main-nav {
+  display: flex;
   align-items: center;
+  gap: 0.35rem;
+
+  list-style: none;
+  margin: 0;
+  padding: 0 0.5rem;                 /* nav breathing room only */
   flex-wrap: wrap;
 }
 
-/* Primary navigation links */
+/* Nav links */
 .main-nav a {
   text-decoration: none;
-  color: inherit;
   font-weight: 600;
-  padding: 0.35rem 0.6rem;
+  padding: 0.15rem 0.25rem;
+  color: inherit;
 }
 
-/* Preserve existing hamburger behavior; keep it visible for mobile breakpoints */
+/* ---------- Hamburger ---------- */
 .hamburger-menu {
   background: none;
   border: 0;
+  padding: 0 0.5rem;
   cursor: pointer;
+
   display: inline-flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 6px;
-}
-
-/* RIGHT-ALIGNED LOGO WRAPPER: pushes itself to the right */
-.logo-wrapper {
-  margin-left: auto;          /* critical: pushes logo to the right */
-  display: flex;
-  align-items: center;
   justify-content: center;
-  min-width: 48px;
+  gap: 4px;
 }
 
-/* Logo image sizing — conservative, responsive */
-.site-logo-img {
-  height: 48px;               /* desktop baseline */
-  width: auto;
-  display: block;
-  object-fit: contain;
-  max-width: 220px;           /* prevents a huge logo breaking header */
+/* ---------- Logo wrapper ---------- */
+.logo-wrapper {
+  margin-left: auto;                 /* push to right */
+  display: flex;
+  align-items: stretch;              /* stretch to full header height */
+  justify-content: center;
+
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  overflow: visible;
 }
 
-/* Responsive smaller sizes */
+/* =========================================================
+   LOGO — 120% OPTICAL ZOOM (NO CROP, SEAMLESS OVERFLOW)
+   ========================================================= */
+/* =========================================================
+   DEPTH MASK — BODY IN FRONT, LOGO BEHIND
+   Sudden drop + opacity pad + long fade
+   ========================================================= */
+
+   .site-logo-img {
+    height: 250px;
+    width: auto;
+  
+    transform: scale(1.8);
+    transform-origin: center center;
+  
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+  
+    /* --- HARD DEPTH MASK --- */
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+  
+      /* HEADER — fully visible */
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 78%,
+  
+      /* BODY START — sudden depth cut */
+      rgba(0,0,0,0.35) 80%,
+  
+      /* OPACITY PAD — feels "behind" */
+      rgba(0,0,0,0.35) 82%,
+  
+      /* LONG FADE INTO BACKGROUND */
+      rgba(0,0,0,0.15) 92%,
+      rgba(0,0,0,0.0) 100%
+    );
+  
+    -webkit-mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+  
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0,0,0,1) 0%,
+      rgba(0,0,0,1) 78%,
+      rgba(0,0,0,0.35) 80%,
+      rgba(0,0,0,0.25) 82%,
+      rgba(0,0,0,0.05) 92%,
+      rgba(0,0,0,0.0) 100%
+    );
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+  }
+  
+  
+
+/* ---------- Responsive scaling ---------- */
 @media (max-width: 900px) {
-  .site-logo-img { height: 44px; }
+  .site-logo-img { height: 180px; }
 }
+
 @media (max-width: 600px) {
-  .site-logo-img { height: 36px; }
-  .logo-wrapper { min-width: 36px; }
-  .main-nav { gap: 0.35rem; font-size: 0.95rem; }
+  .site-logo-img { height: 140px; }
 }
 
-/* If an existing header used floats/absolute layout, this ensures the header doesn't jump */
-.main-header, .nav-wrapper { position: relative; z-index: 50; }
+@media (max-width: 420px) {
+  .site-logo-img { height: 120px; }
+}
 
-/* Small visual polishing (optional) */
-.logo-link { display: inline-block; text-decoration: none; }
+/* ---------- Safety ---------- */
+.logo-link {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
