@@ -232,3 +232,38 @@
   }
 }
 
+/* =========================================================
+   DESKTOP HEADER — RESTORE TRUE LOGO OVERFLOW
+   ========================================================= */
+@media (min-width: 769px) {
+
+  /* Remove vertical padding cage */
+  .main-header .nav-wrapper {
+    padding-top: 0;
+    padding-bottom: 0;
+    align-items: stretch; /* critical */
+  }
+
+  /* Let logo escape vertically */
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    overflow: visible;
+  }
+
+  /* Reassert cinematic scale */
+  .site-logo-img {
+    height: 220px;              /* or your preferred size */
+    transform: scale(1.6);
+    transform-origin: center center;
+    margin: 0;                 /* kill phantom margins */
+    padding: 0;
+  }
+
+  /* Header must not clip */
+  .main-header {
+    overflow: visible;
+  }
+}
+
+
