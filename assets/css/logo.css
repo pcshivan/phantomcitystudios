@@ -1,0 +1,88 @@
+/* assets/css/logo.css — Phantom City Studios: Logo & header safety rules */
+
+/* visually-hidden (keeps text in DOM for SEO & SR, hides it visually) */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Ensure nav is flexible but non-invasive */
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* nav links group: allow them to wrap on narrow screens */
+.main-nav {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Primary navigation links */
+.main-nav a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  padding: 0.35rem 0.6rem;
+}
+
+/* Preserve existing hamburger behavior; keep it visible for mobile breakpoints */
+.hamburger-menu {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+}
+
+/* RIGHT-ALIGNED LOGO WRAPPER: pushes itself to the right */
+.logo-wrapper {
+  margin-left: auto;          /* critical: pushes logo to the right */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+}
+
+/* Logo image sizing — conservative, responsive */
+.site-logo-img {
+  height: 48px;               /* desktop baseline */
+  width: auto;
+  display: block;
+  object-fit: contain;
+  max-width: 220px;           /* prevents a huge logo breaking header */
+}
+
+/* Responsive smaller sizes */
+@media (max-width: 900px) {
+  .site-logo-img { height: 44px; }
+}
+@media (max-width: 600px) {
+  .site-logo-img { height: 36px; }
+  .logo-wrapper { min-width: 36px; }
+  .main-nav { gap: 0.35rem; font-size: 0.95rem; }
+}
+
+/* If an existing header used floats/absolute layout, this ensures the header doesn't jump */
+.main-header, .nav-wrapper { position: relative; z-index: 50; }
+
+/* Small visual polishing (optional) */
+.logo-link { display: inline-block; text-decoration: none; }
