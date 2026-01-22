@@ -189,7 +189,7 @@
 /* spacing between bars */
 /* Make dark logo visible on black header */
 .site-logo-img {
-  filter: brightness(0.7);
+  filter: brightness(0.8);
 }
 
 /* =========================================================
@@ -211,12 +211,11 @@
   /* Shrink logo aggressively */
   .site-logo-img {
     height: 120px !important;
-    transform: none !important;
     mask-image: none !important;
     -webkit-mask-image: none !important;
     transform: scale(2.2);
 
-    filter: brightness(0.7);
+    filter: brightness(0.8);
      
   }
 
