@@ -7,27 +7,40 @@
     <link rel="stylesheet" href="assets/css/phantom-styles.css" />   
 
     <link rel="stylesheet" href="assets/css/main-styles.css" />
+    <link rel="stylesheet" href="assets/css/logo.css">
  
 </head>
 <body>
 
+
     <header class="main-header">
-        <nav>
-            <a href="index.html" class="logo">PHANTOM CITY STUDIOS</a>
-            <ul>
-                <li><a href="phantom-agents.html" class="agents-link">Phantom Agents</a></li>       
+        <nav class="nav-wrapper">
+            <a href="index.html" class="site-title visually-hidden">Phantom City Studios</a>
+        
+            <ul class="main-nav">
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>                
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="ourteam.html">Our Team</a></li>
+
+                <li><a href="faq.html" class="active">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="phantom-agents.html">Phantom Agents</a></li>
+
             </ul>
+        
+            <div class="logo-wrapper">
+                <a href="index.html">
+                <img src="assets/images/phantom_logo.png"
+                    srcset="assets/images/phantom_logo@2x.png 2x"
+                    alt="Phantom City Studios"
+                    class="site-logo-img">
+                </a>
+            </div>
             <!-- Hamburger Menu Button -->
-            <button class="hamburger-menu" aria-label="Open navigation menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
             </button>
         </nav>
     </header>
