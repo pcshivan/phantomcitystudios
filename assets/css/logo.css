@@ -48,18 +48,18 @@
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.15rem;
 
   list-style: none;
   margin: 0;
-  padding: 0 0.5rem;                 /* nav breathing room only */
+  padding: 0 0.3rem;                 /* nav breathing room only */
   flex-wrap: wrap;
 }
 
 /* Nav links */
 .main-nav a {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 800;
   padding: 0.15rem 0.25rem;
   color: inherit;
 }
@@ -68,7 +68,7 @@
 .hamburger-menu {
   background: none;
   border: 0;
-  padding:  0.5rem;
+  padding:  0.3rem;
   cursor: pointer;
 
   display: inline-flex;
@@ -103,7 +103,7 @@
     height: 160px;
     width: auto;
   
-    transform: scale(1.8);
+    transform: scale(2);
     transform-origin: center center;
   
     display: block;
@@ -214,7 +214,10 @@
     transform: none !important;
     mask-image: none !important;
     -webkit-mask-image: none !important;
+    transform: scale(2.2);
+
     filter: brightness(0.7);
+     
   }
 
   /* Prevent overflow chaos */
@@ -254,7 +257,7 @@
   /* Reassert cinematic scale */
   .site-logo-img {
     height: 220px;              /* or your preferred size */
-    transform: scale(1.8);
+    transform: scale(2);
     transform-origin: center center;
     margin: 0;                 /* kill phantom margins */
     padding: 0;
