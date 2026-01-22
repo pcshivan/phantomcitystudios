@@ -191,3 +191,44 @@
 .site-logo-img {
   filter: brightness(1.2);
 }
+
+/* =========================================================
+   MOBILE HEADER — MINIMAL & CLEAN
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* Hide desktop nav completely */
+  .main-nav {
+    display: none !important;
+  }
+
+  /* Compact header height */
+  .nav-wrapper {
+    align-items: center;
+    min-height: 56px;
+  }
+
+  /* Shrink logo aggressively */
+  .site-logo-img {
+    height: 28px !important;
+    transform: none !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    filter: brightness(1.1);
+  }
+
+  /* Prevent overflow chaos */
+  .logo-wrapper {
+    margin-right: 0.5rem;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Hamburger becomes primary control */
+  .hamburger-menu {
+    margin-left: auto;
+    padding: 0.5rem;
+    z-index: 500;
+  }
+}
+
