@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom City Studios - CSV to AI Prompts Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(22, 33, 62, 0.95);
+            border: 2px solid #0f3460;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #e94560;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #e94560;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .tagline {
+            color: #00d4ff;
+            font-size: 0.95em;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .mission-context {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid #e94560;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 6px;
+        }
+
+        .csv-upload {
+            border: 3px dashed #00d4ff;
+            padding: 50px;
+            text-align: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 30px 0;
+            background: rgba(0, 212, 255, 0.05);
+        }
+
+        .csv-upload:hover {
+            border-color: #e94560;
+            background: rgba(233, 69, 96, 0.1);
+            transform: scale(1.02);
+        }
+
+        .csv-upload.dragover {
+            border-color: #e94560;
+            background: rgba(233, 69, 96, 0.2);
+        }
+
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .status-message {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: 600;
+            display: none;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .status-success {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+            border: 2px solid #4caf50;
+            display: block;
+        }
+
+        .status-error {
+            background: rgba(233, 69, 96, 0.2);
+            color: #e94560;
+            border: 2px solid #e94560;
+            display: block;
+        }
+
+        .scene-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .scene-btn {
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            border: 2px solid #00d4ff;
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .scene-btn:hover {
+            background: linear-gradient(135deg, #e94560 0%, #d63447 100%);
+            border-color: #e94560;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.4);
+        }
+
+        .scene-btn.active {
+            background: linear-gradient(135deg, #e94560 0%, #d63447 100%);
+            border-color: #e94560;
+        }
+
+        .scene-number {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .scene-title {
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .output-section {
+            margin-top: 40px;
+            background: rgba(15, 52, 96, 0.5);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #0f3460;
+        }
+
+        .section-title {
+            color: #00d4ff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .prompt-card {
+            background: rgba(30, 30, 50, 0.9);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #e94560;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .prompt-title {
+            color: #00d4ff;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .prompt-text {
+            color: #e0e0e0;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+
+        .copy-btn {
+            background: #00d4ff;
+            color: #16213e;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #00a8cc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-download {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 32px;
+            font-size: 1.1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #00d4ff 0%, #00a8cc 100%);
+            color: #16213e;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.5);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #00d4ff;
+        }
+
+        .empty-state-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .instructions {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .instructions h3 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            line-height: 2;
+        }
+
+        .instructions li {
+            margin: 10px 0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #00d4ff;
+            font-size: 1.2em;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 212, 255, 0.1);
+            border-top: 4px solid #00d4ff;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background: rgba(15, 52, 96, 0.3);
+        }
+
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background: #e94560;
+            border-radius: 5px;
+        }
+
+        .scrollbar-custom::-webkit-scrollbar-thumb:hover {
+            background: #00d4ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Phantom City Studios</h1>
+            <p class="tagline">CSV to AI IMAGE Prompts - High-Quality Still Frame Generation</p>
+            <div class="mission-context">
+                <strong style="color: #e94560;">⚠️ CRITICAL: IMAGE GENERATION ONLY - NO VIDEO GENERATION</strong><br>
+                <strong>The Mother of Divinity: Lord Shiva's Lullaby</strong><br>
+                50-Scene Cinematic Photography | 4 Image Variations Per Scene | Military-Grade Specifications<br>
+                <span style="color: #00d4ff; font-size: 0.9em;">Generate high-quality still images using KLING Image O1, Nano Banana, or Nano Banana Pro</span>
+            </div>
+        </header>
+
+        <div class="model-selector" style="background: rgba(0, 212, 255, 0.1); border: 2px solid #00d4ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <label for="aiModel" style="color: #00d4ff; font-weight: 700; font-size: 1.1em; display: block; margin-bottom: 10px;">
+                🖼️ Select AI Image Generation Model:
+            </label>
+            <select id="aiModel" style="width: 100%; padding: 12px; font-size: 1em; background: rgba(30, 30, 50, 0.9); color: #e0e0e0; border: 2px solid #00d4ff; border-radius: 6px; cursor: pointer;">
+                <option value="KLING Image O1">KLING Image O1 (High Quality Image Generation)</option>
+                <option value="Nano Banana">Nano Banana (Fast Image Generation)</option>
+                <option value="Nano Banana Pro">Nano Banana Pro (Premium Image Quality)</option>
+            </select>
+        </div>
+
+        <div class="instructions">
+            <h3>📋 How It Works</h3>
+            <ol>
+                <li><strong>Upload CSV:</strong> Drag & drop your CSV file or click to browse</li>
+                <li><strong>Select Scene:</strong> Click any scene button to generate prompts automatically</li>
+                <li><strong>Get 4 Variations:</strong> Each scene generates 4 different cinematic prompts</li>
+                <li><strong>Copy & Use:</strong> Click "Copy" on any prompt or download all as JSON/Text</li>
+            </ol>
+        </div>
+
+        <div class="csv-upload" id="csvUpload" onclick="document.getElementById('csvFile').click()">
+            <div class="upload-icon">📂</div>
+            <h2 style="color: #00d4ff; margin-bottom: 10px;">Drop CSV File Here or Click to Browse</h2>
+            <p style="color: #e0e0e0;">Supports Lord_Shiva_Lullaby CSV with all 13 headers</p>
+            <input type="file" id="csvFile" accept=".csv" style="display: none;">
+        </div>
+
+        <div id="statusMessage" class="status-message"></div>
+
+        <div id="sceneGrid" class="scene-grid scrollbar-custom" style="display: none; max-height: 600px; overflow-y: auto; padding-right: 10px;"></div>
+
+        <div class="output-section scrollbar-custom" id="outputSection" style="display: none;">
+            <div class="section-title">🎯 Generated AI IMAGE Prompts (4 Variations)</div>
+            <div id="outputContainer" style="max-height: 800px; overflow-y: auto;" class="scrollbar-custom">
+                <div class="empty-state">
+                    <div class="empty-state-icon">⏳</div>
+                    <p style="font-size: 1.2em;">Select a scene to generate prompts</p>
+                </div>
+            </div>
+            <div class="button-group" id="exportButtons" style="display: none;">
+                <button class="btn-download" onclick="downloadAsJSON()">📥 Download JSON (Standard)</button>
+                <button class="btn-download" onclick="downloadAsJSONRobust()">🔧 Download JSON (API-Ready)</button>
+                <button class="btn-download" onclick="downloadAsText()">📄 Download Text</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let csvData = [];
+        let currentScene = null;
+
+        // CSV Upload Handlers
+        const csvUpload = document.getElementById('csvUpload');
+        const csvFile = document.getElementById('csvFile');
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            csvUpload.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            csvUpload.addEventListener(eventName, () => csvUpload.classList.add('dragover'), false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            csvUpload.addEventListener(eventName, () => csvUpload.classList.remove('dragover'), false);
+        });
+
+        csvUpload.addEventListener('drop', handleDrop, false);
+        csvFile.addEventListener('change', handleFile, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length > 0) {
+                handleFile({ target: { files: files } });
+            }
+        }
+
+        function handleFile(e) {
+            const files = e.target.files;
+            if (files.length === 0) return;
+
+            const file = files[0];
+            if (!file.name.endsWith('.csv')) {
+                showStatus('❌ Please upload a CSV file', 'error');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                try {
+                    parseCSV(event.target.result);
+                    showStatus(`✅ CSV loaded successfully! ${csvData.length} scenes found. Click any scene to generate prompts.`, 'success');
+                    createSceneButtons();
+                    document.getElementById('outputSection').style.display = 'block';
+                } catch (error) {
+                    showStatus('❌ Error parsing CSV: ' + error.message, 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function parseCSV(csvText) {
+            const lines = csvText.trim().split('\n');
+            if (lines.length < 2) {
+                throw new Error('CSV file is empty or invalid');
+            }
+
+            // Parse headers - handle both quoted and unquoted
+            const headerLine = lines[0];
+            const headers = [];
+            let currentHeader = '';
+            let inQuotes = false;
+
+            for (let i = 0; i < headerLine.length; i++) {
+                const char = headerLine[i];
+                if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    headers.push(currentHeader.trim().replace(/^"|"$/g, ''));
+                    currentHeader = '';
+                } else {
+                    currentHeader += char;
+                }
+            }
+            headers.push(currentHeader.trim().replace(/^"|"$/g, ''));
+
+            // Parse data rows
+            csvData = [];
+            for (let i = 1; i < lines.length; i++) {
+                if (lines[i].trim() === '') continue;
+
+                const values = [];
+                let currentValue = '';
+                let inQuotes = false;
+
+                for (let j = 0; j < lines[i].length; j++) {
+                    const char = lines[i][j];
+                    if (char === '"') {
+                        if (inQuotes && lines[i][j + 1] === '"') {
+                            currentValue += '"';
+                            j++;
+                        } else {
+                            inQuotes = !inQuotes;
+                        }
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(currentValue.trim());
+                        currentValue = '';
+                    } else {
+                        currentValue += char;
+                    }
+                }
+                values.push(currentValue.trim());
+
+                // Create row object with normalized headers
+                const row = {};
+                for (let j = 0; j < headers.length; j++) {
+                    let value = values[j] || '';
+                    value = value.replace(/^"|"$/g, '');
+                    row[headers[j]] = value;
+                }
+
+                csvData.push(row);
+            }
+        }
+
+        function createSceneButtons() {
+            const grid = document.getElementById('sceneGrid');
+            grid.innerHTML = '';
+            grid.style.display = 'grid';
+
+            csvData.forEach((row, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'scene-btn';
+                
+                const sceneNum = row['Scene'] || (index + 1);
+                const title = row['Title'] || `Scene ${index + 1}`;
+                
+                btn.innerHTML = `
+                    <div class="scene-number">Scene ${sceneNum}</div>
+                    <div class="scene-title">${title}</div>
+                `;
+                
+                btn.onclick = () => generatePromptsForScene(index, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        function generatePromptsForScene(index, button) {
+            // Remove active class from all buttons
+            document.querySelectorAll('.scene-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            currentScene = csvData[index];
+            const output = document.getElementById('outputContainer');
+            
+            output.innerHTML = '<div class="loading"><div class="spinner"></div><p>Generating 4 prompt variations...</p></div>';
+
+            setTimeout(() => {
+                const variations = generateFourVariations(currentScene);
+                displayPrompts(variations);
+                document.getElementById('exportButtons').style.display = 'flex';
+            }, 500);
+        }
+
+        function generateFourVariations(sceneData) {
+            const basePrompt = buildPrompt(sceneData);
+            
+            const styles = [
+                'cinematic wide shot establishing epic scale with sweeping camera movement',
+                'intimate close-up with shallow depth of field (T2.0) for maximum emotional impact',
+                'dynamic movement shot with deliberate camera motion for narrative progression',
+                'atmospheric environmental detail emphasizing mood, lighting, and setting immersion'
+            ];
+
+            return styles.map((style, index) => ({
+                title: `Prompt Variation ${index + 1}`,
+                prompt: basePrompt.replace(
+                    'FINAL DIRECTIVE:',
+                    `VARIATION STYLE: ${style}\n\nFINAL DIRECTIVE:`
+                )
+            }));
+        }
+
+        function buildPrompt(data) {
+            let prompt = '⚠️ CRITICAL INSTRUCTION: Generate a HIGH-QUALITY STILL IMAGE ONLY. DO NOT generate video, animation, or motion content. This is for CINEMATIC PHOTOGRAPHY / SINGLE FRAME IMAGE GENERATION.\n\n';
+            prompt += 'Generate a professional cinematic photograph depicting the following specifications:\n\n';
+
+            // Use flexible header names with fallbacks
+            const getField = (names) => {
+                for (const name of names) {
+                    if (data[name]) return data[name];
+                }
+                return '';
+            };
+
+            const shotType = getField(['Shot Type', 'ShotType', 'shot_type']);
+            const charDetails = getField(['Character Details', 'CharacterDetails', 'character_details']);
+            const expressions = getField(['Expressions', 'expressions']);
+            const wardrobe = getField(['Wardrobe/Props', 'Wardrobe', 'Props', 'wardrobe_props']);
+            const background = getField(['Background/Set', 'Background', 'Set', 'background_set']);
+            const colorTone = getField(['Colour Tone', 'Color Tone', 'ColorTone', 'colour_tone', 'color_tone']);
+            const mood = getField(['Mood', 'mood']);
+            const lighting = getField(['Lighting', 'lighting']);
+            const camera = getField(['Camera Movement', 'CameraMovement', 'camera_movement']);
+            const reference = getField(['Cinematic Reference', 'CinematicReference', 'cinematic_reference']);
+            const notes = getField(['Special Notes', 'SpecialNotes', 'special_notes']);
+
+            if (shotType) {
+                prompt += `SHOT TYPE:\n${shotType}\n\n`;
+            }
+
+            if (charDetails) {
+                let fullCharDetails = charDetails;
+                if (expressions) {
+                    fullCharDetails += `\n\n[EXPRESSIONS] ${expressions}`;
+                }
+                prompt += `CHARACTER DETAILS:\n${fullCharDetails}\n\n`;
+            }
+
+            if (wardrobe) {
+                prompt += `WARDROBE & PROPS:\n${wardrobe}\n\n`;
+            }
+
+            if (background) {
+                prompt += `SETTING & BACKGROUND:\n${background}\n\n`;
+            }
+
+            if (colorTone) {
+                prompt += `COLOR PALETTE:\nDominant colors: ${colorTone}\n\n`;
+            }
+
+            if (mood) {
+                prompt += `MOOD & ATMOSPHERE:\n${mood}\n\n`;
+            }
+
+            if (lighting) {
+                prompt += `LIGHTING SPECIFICATIONS:\n${lighting}\n\n`;
+            }
+
+            if (camera) {
+                prompt += `CAMERA & COMPOSITION:\n${camera}\n\n`;
+            }
+
+            if (reference) {
+                prompt += `CINEMATIC REFERENCES:\nThis should appear in the visual style of: ${reference}\n\n`;
+            }
+
+            if (notes) {
+                prompt += `PRODUCTION SPECIFICATIONS:\n${notes}\n\n`;
+            }
+
+            prompt += `FINAL DIRECTIVE FOR IMAGE GENERATION:\n`;
+            prompt += `- GENERATE: Single high-quality still image (NOT video/animation)\n`;
+            prompt += `- FORMAT: Cinematic photograph meeting Hollywood photography standards\n`;
+            prompt += `- RESOLUTION: 8K-ready (7680×4320) or highest available resolution\n`;
+            prompt += `- QUALITY: Professional-grade photorealism with artistic vision\n`;
+            prompt += `- OUTPUT TYPE: Static image frame for Phantom City Studios pipeline\n`;
+            prompt += `- MODELS: Optimized for KLING Image O1, Nano Banana, or Nano Banana Pro image generation\n`;
+            prompt += `- AVOID: Motion blur, temporal effects, video-specific elements, animation cues\n\n`;
+            prompt += `This prompt is specifically designed for AI IMAGE generation systems that produce single static frames with cinematic quality.`;
+
+            return prompt;
+        }
+
+        function displayPrompts(variations) {
+            const output = document.getElementById('outputContainer');
+            output.innerHTML = '';
+
+            variations.forEach((variation, index) => {
+                const card = createPromptCard(variation.title, variation.prompt, index);
+                output.appendChild(card);
+            });
+        }
+
+        function createPromptCard(title, text, index) {
+            const card = document.createElement('div');
+            card.className = 'prompt-card';
+            
+            const titleEl = document.createElement('div');
+            titleEl.className = 'prompt-title';
+            titleEl.innerHTML = `${title} <span style="color: #00d4ff; font-size: 0.85em;">(Generate 4 images)</span>`;
+            
+            const textEl = document.createElement('div');
+            textEl.className = 'prompt-text';
+            textEl.textContent = text;
+            textEl.style.maxHeight = '400px';
+            textEl.style.overflowY = 'auto';
+            
+            const buttonContainer = document.createElement('div');
+            buttonContainer.style.display = 'flex';
+            buttonContainer.style.gap = '10px';
+            buttonContainer.style.marginTop = '15px';
+
+            const copyBtn = document.createElement('button');
+            copyBtn.className = 'copy-btn';
+            copyBtn.textContent = '📋 Copy Prompt';
+            copyBtn.onclick = () => {
+                navigator.clipboard.writeText(text).then(() => {
+                    copyBtn.textContent = '✅ Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = '📋 Copy to Clipboard';
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback for browsers without clipboard API
+                    const textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    copyBtn.textContent = '✅ Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = '📋 Copy to Clipboard';
+                    }, 2000);
+                });
+            };
+            
+            const copyJSONBtn = document.createElement('button');
+            copyJSONBtn.className = 'copy-btn';
+            copyJSONBtn.style.background = '#e94560';
+            copyJSONBtn.textContent = '📦 Copy JSON Format';
+            copyJSONBtn.onclick = () => {
+                const selectedModel = document.getElementById('aiModel').value;
+                const jsonFormat = {
+                    generation_type: "image",
+                    quantity: 4,
+                    model: selectedModel,
+                    prompt: text,
+                    parameters: {
+                        output_format: "static_image",
+                        resolution: "8K",
+                        aspect_ratio: "16:9",
+                        style: "cinematic_photography",
+                        quality: "maximum",
+                        avoid: ["video", "animation", "motion"]
+                    }
+                };
+                
+                const jsonText = JSON.stringify(jsonFormat, null, 2);
+                navigator.clipboard.writeText(jsonText).then(() => {
+                    copyJSONBtn.textContent = '✅ JSON Copied!';
+                    setTimeout(() => {
+                        copyJSONBtn.textContent = '📦 Copy JSON Format';
+                    }, 2000);
+                }).catch(() => {
+                    const textarea = document.createElement('textarea');
+                    textarea.value = jsonText;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textarea);
+                    copyJSONBtn.textContent = '✅ JSON Copied!';
+                    setTimeout(() => {
+                        copyJSONBtn.textContent = '📦 Copy JSON Format';
+                    }, 2000);
+                });
+            };
+
+            buttonContainer.appendChild(copyBtn);
+            buttonContainer.appendChild(copyJSONBtn);
+            
+            card.appendChild(titleEl);
+            card.appendChild(textEl);
+            card.appendChild(buttonContainer);
+            
+            return card;
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.textContent = message;
+            statusDiv.className = `status-message status-${type}`;
+            
+            if (type === 'success') {
+                setTimeout(() => {
+                    statusDiv.className = 'status-message';
+                }, 10000);
+            }
+        }
+
+        function downloadAsJSON() {
+            const output = document.getElementById('outputContainer');
+            const prompts = Array.from(output.querySelectorAll('.prompt-card')).map(card => ({
+                title: card.querySelector('.prompt-title').textContent,
+                prompt: card.querySelector('.prompt-text').textContent
+            }));
+
+            const sceneTitle = currentScene['Title'] || 'Scene';
+            const sceneNum = currentScene['Scene'] || '';
+            const selectedModel = document.getElementById('aiModel').value;
+
+            const data = {
+                projectTitle: 'The Mother of Divinity - Lord Shiva\'s Lullaby',
+                scene: sceneNum,
+                sceneTitle: sceneTitle,
+                aiModel: selectedModel,
+                prompts: prompts,
+                generatedAt: new Date().toISOString(),
+                generatedBy: 'Phantom City Studios - CSV Prompt Generator v5.0'
+            };
+
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            downloadFile(dataBlob, `scene_${sceneNum}_prompts.json`);
+        }
+
+        function downloadAsJSONRobust() {
+            const output = document.getElementById('outputContainer');
+            const promptCards = Array.from(output.querySelectorAll('.prompt-card'));
+            
+            const sceneTitle = currentScene['Title'] || 'Scene';
+            const sceneNum = currentScene['Scene'] || '';
+            const selectedModel = document.getElementById('aiModel').value;
+
+            const prompts = promptCards.map((card, index) => ({
+                variation_id: index + 1,
+                variation_name: card.querySelector('.prompt-title').textContent,
+                generation_type: "image",
+                quantity: 4,
+                model: selectedModel,
+                prompt: card.querySelector('.prompt-text').textContent,
+                parameters: {
+                    output_format: "static_image",
+                    resolution: "8K",
+                    aspect_ratio: "16:9",
+                    style: "cinematic_photography",
+                    quality: "maximum",
+                    avoid: ["video", "animation", "motion", "temporal_effects"]
+                }
+            }));
+
+            const data = {
+                project: {
+                    title: 'The Mother of Divinity - Lord Shiva\'s Lullaby',
+                    scene_number: sceneNum,
+                    scene_title: sceneTitle,
+                    generation_type: "image",
+                    total_variations: prompts.length,
+                    images_per_variation: 4,
+                    total_images_expected: prompts.length * 4
+                },
+                ai_configuration: {
+                    selected_model: selectedModel,
+                    generation_mode: "image_only",
+                    video_generation_disabled: true,
+                    output_type: "static_frame"
+                },
+                prompts: prompts,
+                metadata: {
+                    generated_at: new Date().toISOString(),
+                    generated_by: 'Phantom City Studios - CSV Prompt Generator v5.0',
+                    api_ready: true,
+                    batch_processing_compatible: true
+                }
+            };
+
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            downloadFile(dataBlob, `scene_${sceneNum}_api_ready_prompts.json`);
+        }
+
+        function downloadAsText() {
+            const output = document.getElementById('outputContainer');
+            const prompts = Array.from(output.querySelectorAll('.prompt-card'));
+
+            const sceneTitle = currentScene['Title'] || 'Scene';
+            const sceneNum = currentScene['Scene'] || '';
+
+            let text = '═══════════════════════════════════════════════════════════════\n';
+            text += '   PHANTOM CITY STUDIOS - AI IMAGE GENERATION PROMPTS\n';
+            text += '   The Mother of Divinity: Lord Shiva\'s Lullaby\n';
+            text += '═══════════════════════════════════════════════════════════════\n\n';
+            text += `Scene ${sceneNum}: ${sceneTitle}\n`;
+            text += `Generated: ${new Date().toLocaleString()}\n\n`;
+
+            prompts.forEach((card) => {
+                text += `───────────────────────────────────────────────────────────────\n`;
+                text += `${card.querySelector('.prompt-title').textContent}\n`;
+                text += `───────────────────────────────────────────────────────────────\n\n`;
+                text += `${card.querySelector('.prompt-text').textContent}\n\n`;
+            });
+
+            text += '═══════════════════════════════════════════════════════════════\n';
+            text += '© 2026 Phantom City Studios. All Rights Reserved.\n';
+            text += '═══════════════════════════════════════════════════════════════\n';
+
+            const dataBlob = new Blob([text], { type: 'text/plain' });
+            downloadFile(dataBlob, `scene_${sceneNum}_prompts.txt`);
+        }
+
+        function downloadFile(blob, filename) {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
