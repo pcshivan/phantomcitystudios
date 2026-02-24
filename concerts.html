@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phantom Concerts | AI-Powered Live Event Production — Phantom City Studios</title>
+  <meta name="description" content="Phantom Concerts redefines live entertainment through the seamless fusion of AI-powered production mastery, strategic market positioning, and uncompromising artistic vision. Three tiers of excellence for those who demand the extraordinary.">
+  <meta name="keywords" content="Phantom Concerts, AI concert production, live event AI, cinematic concerts, AI entertainment, Phantom City Studios, live performance technology, concert production India, AI live events Chennai">
+  <meta name="author" content="Phantom City Studios">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#ffcc00">
+  <link rel="canonical" href="https://www.phantomcitystudios.com/concerts.html">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Phantom Concerts | AI-Powered Live Event Production">
+  <meta property="og:description" content="Phantom Concerts redefines live entertainment through AI-powered production mastery, strategic positioning, and uncompromising artistic vision.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.phantomcitystudios.com/concerts.html">
+  <meta property="og:image" content="https://www.phantomcitystudios.com/assets/images/phantom_logo@2x.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Phantom City Studios">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@phantomcitystudios">
+  <meta name="twitter:creator" content="@phantomcitystudios">
+  <meta name="twitter:title" content="Phantom Concerts | AI-Powered Live Event Production">
+  <meta name="twitter:description" content="Phantom Concerts redefines live entertainment through AI-powered production mastery, strategic positioning, and uncompromising artistic vision.">
+  <meta name="twitter:image" content="https://www.phantomcitystudios.com/assets/images/phantom_logo@2x.png">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Phantom Concerts",
+    "provider": {
+      "@type": "Organization",
+      "name": "Phantom City Studios",
+      "url": "https://www.phantomcitystudios.com"
+    },
+    "description": "AI-powered live concert production fusing strategic intelligence with artistic brilliance to architect cultural moments that define generations.",
+    "url": "https://www.phantomcitystudios.com/concerts.html",
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "serviceType": "Live Event Production"
+  }
+  </script>
+
+  <!-- Performance: Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Brand Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main-styles.css">
+  <link rel="stylesheet" href="assets/css/logo.css">
+
+  <style>
+    /* ==========================================================
+       PHANTOM CONCERTS — Page-Specific Styles
+       ========================================================== */
+
+    /* Scrolling announcement ticker */
+    .scrolling-text {
+      font-size: clamp(1.2rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-top: 40px;
+      overflow: hidden;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .scrolling-text span {
+      display: inline-block;
+      animation: phantom-slide 15s linear infinite;
+      white-space: nowrap;
+      letter-spacing: 0.15em;
+    }
+
+    @keyframes phantom-slide {
+      0%   { transform: translateX(120%); opacity: 0; }
+      15%  { opacity: 1; }
+      50%  { transform: translateX(0%);   opacity: 1; }
+      85%  { opacity: 1; }
+      100% { transform: translateX(-120%); opacity: 0; }
+    }
+
+    /* ---- Hero — Concerts override ---- */
+    .concerts-hero {
+      text-align: center;
+      padding: 90px 20px 60px;
+      position: relative;
+    }
+
+    .concerts-hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue), var(--accent-gold));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 24px;
+      animation: gradient-shift 5s ease-in-out infinite;
+    }
+
+    @keyframes gradient-shift {
+      0%, 100% { background-position: 0% 50%; }
+      50%       { background-position: 100% 50%; }
+    }
+
+    .concerts-hero .subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* ---- Carousel ---- */
+    .carousel-section {
+      max-width: 1400px;
+      margin: 70px auto;
+      padding: 0 20px;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 80vh;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #000;
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 50px var(--gold-glow);
+      border: 1.5px solid rgba(255, 204, 0, 0.6);
+    }
+
+    .carousel-images {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-images img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.4s ease-in-out;
+    }
+
+    .carousel-images img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
+    /* Glassmorphic overlay */
+    .carousel-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.6)  50%,
+        transparent 100%
+      );
+      padding: 40px;
+      z-index: 2;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .carousel-overlay h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      color: var(--accent-gold);
+      margin-bottom: 10px;
+      text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+    }
+
+    .carousel-overlay p {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--text-secondary);
+      max-width: 680px;
+      line-height: 1.7;
+    }
+
+    /* Carousel controls — dots */
+    .carousel-controls {
+      position: absolute;
+      bottom: 28px; right: 40px;
+      display: flex;
+      gap: 10px;
+      z-index: 3;
+    }
+
+    .carousel-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: 1.5px solid rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-dot:hover {
+      background: rgba(255, 255, 255, 0.55);
+      transform: scale(1.3);
+    }
+
+    .carousel-dot.active {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    /* Arrow navigation */
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px; height: 50px;
+      background: rgba(10, 10, 10, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .carousel-arrow:hover {
+      background: var(--accent-blue);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+
+    .carousel-arrow.prev { left: 20px; }
+    .carousel-arrow.next { right: 20px; }
+    .carousel-arrow svg  { width: 22px; height: 22px; fill: #fff; }
+
+    /* ---- Performance Architecture Section ---- */
+    .comparison-section {
+      max-width: 1400px;
+      margin: 110px auto;
+      padding: 0 20px;
+    }
+
+    .comparison-section h2 {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--accent-gold);
+      margin-bottom: 18px;
+      text-shadow: 0 0 24px var(--gold-glow);
+    }
+
+    .comparison-section .section-intro {
+      text-align: center;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--text-secondary);
+      max-width: 680px;
+      margin: 0 auto 70px auto;
+      line-height: 1.8;
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 36px;
+    }
+
+    .comparison-card {
+      background: var(--surface-color);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 40px 35px;
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .comparison-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s ease;
+    }
+
+    .comparison-card:hover {
+      transform: translateY(-12px);
+      box-shadow:
+        0 24px 55px rgba(0, 0, 0, 0.45),
+        0 0 45px var(--primary-glow);
+      border-color: var(--accent-blue);
+    }
+
+    .comparison-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .comparison-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: var(--accent-gold);
+      margin-bottom: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    .card-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 18px;
+      font-style: italic;
+    }
+
+    .card-divider {
+      border: none;
+      border-top: 1px solid rgba(0, 191, 255, 0.18);
+      margin: 18px 0 22px;
+    }
+
+    .comparison-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    .comparison-card ul li {
+      padding: 9px 0 9px 26px;
+      position: relative;
+      font-size: 0.93rem;
+      color: var(--text-primary);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      line-height: 1.5;
+    }
+
+    .comparison-card ul li:last-child {
+      border-bottom: none;
+    }
+
+    .comparison-card ul li::before {
+      content: '\2726';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      color: var(--accent-gold);
+      font-size: 0.6rem;
+    }
+
+    /* ---- Vision / Edge Section ---- */
+    .vision-section {
+      max-width: 1180px;
+      margin: 110px auto;
+      padding: 65px 45px;
+      text-align: center;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 191, 255, 0.05),
+        rgba(255, 204, 0, 0.04)
+      );
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-section::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: -80px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0, 191, 255, 0.07), transparent 70%);
+      pointer-events: none;
+    }
+
+    .vision-section::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .vision-section h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--accent-blue);
+      margin-bottom: 35px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .vision-section p {
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      color: var(--text-primary);
+      line-height: 1.95;
+      max-width: 880px;
+      margin: 0 auto 28px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 18px 52px;
+      background: linear-gradient(90deg, var(--accent-blue), #8a2be2);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 22px rgba(0, 191, 255, 0.4);
+      animation: cta-pulse 3s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-button:hover {
+      transform: scale(1.06);
+      box-shadow: 0 0 40px rgba(0, 191, 255, 0.8), 0 0 70px rgba(0, 191, 255, 0.25);
+      background: linear-gradient(90deg, #8a2be2, var(--accent-blue));
+    }
+
+    @keyframes cta-pulse {
+      0%, 100% { box-shadow: 0 0 22px rgba(0, 191, 255, 0.4); }
+      50%       { box-shadow: 0 0 38px rgba(0, 191, 255, 0.7), 0 0 65px rgba(0, 191, 255, 0.2); }
+    }
+
+    /* ---- Footer ---- */
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-brand {
+      font-family: 'Cinzel', serif;
+      color: var(--accent-gold);
+      font-size: 1.05rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover { color: #fff; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) and (min-width: 769px) {
+      .comparison-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .carousel-overlay { padding: 18px; }
+      .carousel-arrow   { width: 40px; height: 40px; }
+      .carousel-arrow.prev { left: 10px; }
+      .carousel-arrow.next { right: 10px; }
+      .carousel-controls {
+        bottom: 18px;
+        right: 50%;
+        transform: translateX(50%);
+      }
+      .comparison-grid  { grid-template-columns: 1fr; }
+      .vision-section   { padding: 40px 22px; margin: 60px auto; }
+      .concerts-hero    { padding: 60px 20px 40px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Animated Background Blob -->
+  <div class="blob-wrapper">
+    <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="blob-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   style="stop-color:#00BFFF;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#ffcc00;stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <circle cx="400" cy="400" r="300" fill="url(#blob-gradient)">
+        <animate attributeName="cx" values="400;450;400" dur="20s" repeatCount="indefinite" />
+        <animate attributeName="cy" values="400;350;400" dur="15s" repeatCount="indefinite" />
+      </circle>
+    </svg>
+  </div>
+
+  <!-- Header — brand-consistent with main site -->
+  <header class="main-header">
+    <nav class="nav-wrapper" aria-label="Primary Navigation">
+      <a href="index.html" class="site-title visually-hidden">Phantom City Studios</a>
+
+      <ul class="main-nav">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="ourteam.html">Our Team</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+      </ul>
+
+      <div class="logo-wrapper">
+        <a href="index.html" class="logo-link" aria-label="Phantom City Studios Home">
+          <img
+            src="assets/images/phantom_logo.png"
+            srcset="assets/images/phantom_logo@2x.png 2x"
+            alt="Phantom City Studios"
+            class="site-logo-img"
+            decoding="async">
+        </a>
+      </div>
+
+      <button class="hamburger-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="ourteam.html">Our Team</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="concerts-hero scroll-fade" id="home">
+    <h1>Phantom Concerts</h1>
+    <p class="subtitle">
+      Where Strategic Intelligence Meets Artistic Brilliance
+    </p>
+    <div class="scrolling-text" aria-hidden="true">
+      <span>GET PHANTOMIZED</span>
+    </div>
+  </section>
+
+  <!-- Carousel Section -->
+  <section class="carousel-section scroll-fade">
+    <div class="carousel-container">
+      <div class="carousel-images">
+        <img src="assets/images/1a_concerts.png"  class="active" alt="Phantom Concerts — Cinematic Stage Vision">
+        <img src="assets/images/1_concerts.jpg"   alt="Concert Stage Performance">
+        <img src="assets/images/2a_concerts.png"  alt="Phantom Concerts — AI Visual Production">
+        <img src="assets/images/2_concerts.jpg"   alt="Concert Audience Experience">
+        <img src="assets/images/3a_concerts.png"  alt="Phantom Concerts — Immersive Atmosphere">
+        <img src="assets/images/3_concerts.jpg"   alt="Stage Lighting Architecture">
+        <img src="assets/images/4_concerts.jpg"   alt="Live Performance Energy">
+        <img src="assets/images/5_concerts.jpg"   alt="Concert Production Design">
+        <img src="assets/images/6_concerts.jpg"   alt="Festival-Scale Atmosphere">
+      </div>
+
+      <!-- Overlay -->
+      <div class="carousel-overlay">
+        <h2>Where Technology Becomes Art</h2>
+        <p>Cinematic technology and performance mastery converge to architect experiences that transcend the ordinary and define the iconic.</p>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <div class="carousel-arrow prev" onclick="changeSlide(-1)" role="button" aria-label="Previous slide">
+        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+      </div>
+      <div class="carousel-arrow next" onclick="changeSlide(1)" role="button" aria-label="Next slide">
+        <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+      </div>
+
+      <!-- Dot Controls — 9 dots matched to 9 slides -->
+      <div class="carousel-controls" role="tablist" aria-label="Carousel navigation">
+        <span class="carousel-dot active" onclick="goToSlide(0)" role="tab" aria-label="Slide 1"></span>
+        <span class="carousel-dot"        onclick="goToSlide(1)" role="tab" aria-label="Slide 2"></span>
+        <span class="carousel-dot"        onclick="goToSlide(2)" role="tab" aria-label="Slide 3"></span>
+        <span class="carousel-dot"        onclick="goToSlide(3)" role="tab" aria-label="Slide 4"></span>
+        <span class="carousel-dot"        onclick="goToSlide(4)" role="tab" aria-label="Slide 5"></span>
+        <span class="carousel-dot"        onclick="goToSlide(5)" role="tab" aria-label="Slide 6"></span>
+        <span class="carousel-dot"        onclick="goToSlide(6)" role="tab" aria-label="Slide 7"></span>
+        <span class="carousel-dot"        onclick="goToSlide(7)" role="tab" aria-label="Slide 8"></span>
+        <span class="carousel-dot"        onclick="goToSlide(8)" role="tab" aria-label="Slide 9"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Architecture Section -->
+  <section class="comparison-section scroll-fade" id="comparison">
+    <h2>The Phantom Performance Architecture</h2>
+    <p class="section-intro">Three distinct tiers of live excellence — each engineered to deliver maximum impact at its respective scale.</p>
+
+    <div class="comparison-grid">
+
+      <div class="comparison-card">
+        <h3>Global Icon Edition</h3>
+        <p class="card-subtitle">Beyond performance — a cultural moment that redefines the global headline.</p>
+        <hr class="card-divider">
+        <ul>
+          <li>Maximum Impact Activation</li>
+          <li>World-Class Marketing, PR &amp; Branding</li>
+          <li>Full-Throttle Live AI Compute</li>
+          <li>Transformative Cultural Moments</li>
+          <li>30-Day Pre-Event Prominence Campaign</li>
+          <li>VVIP Guest Curation &#10025;</li>
+        </ul>
+      </div>
+
+      <div class="comparison-card">
+        <h3>Excitement Edition</h3>
+        <p class="card-subtitle">A vibrant Music-AI experience that electrifies every space it inhabits.</p>
+        <hr class="card-divider">
+        <ul>
+          <li>High Performance Delivery</li>
+          <li>Elevated Stage Presence</li>
+          <li>Mid-Tier AI Integration</li>
+          <li>Unforgettable Cultural Moments</li>
+          <li>Marketing &amp; PR available as add-on</li>
+        </ul>
+      </div>
+
+      <div class="comparison-card">
+        <h3>Experience Edition</h3>
+        <p class="card-subtitle">We architect the stage. The resonance extends far beyond.</p>
+        <hr class="card-divider">
+        <ul>
+          <li>Pure Performance Excellence</li>
+          <li>Focused Stage Activation</li>
+          <li>Functional AI Integration</li>
+          <li>Client-directed pre &amp; post production</li>
+          <li>Marketing scope available separately</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Vision / Edge Section -->
+  <section class="vision-section scroll-fade" id="vision">
+    <h2>Our Edge</h2>
+    <p>
+      Phantom Concerts represents the frontier of live entertainment — a seamless fusion of
+      AI-powered production mastery, strategic market positioning, and uncompromising
+      artistic vision. We do not simply produce concerts; we architect cultural moments that
+      define generations.
+    </p>
+    <p>
+      We elevate the standards of live performance by leveraging cutting-edge multimodal AI
+      technologies alongside proven concert production expertise. Our client-centric approach
+      and uncompromising quality standards place Phantom City Studios in a category entirely
+      its own — a partner of choice for those who demand the extraordinary.
+    </p>
+    <a href="contact.html" class="cta-button">Commission a Production &nbsp;&rarr;</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-brand">Phantom City Studios</p>
+      <p>&copy; 2026 Phantom City Studios. All Rights Reserved.</p>
+      <p>Chennai, Tamil Nadu, India &nbsp;|&nbsp; <a href="mailto:info@phantomcitystudios.com">info@phantomcitystudios.com</a></p>
+    </div>
+  </footer>
+
+  <!-- Core Site Scripts (hamburger, scroll-fade) -->
+  <script src="assets/js/main-scripts.js"></script>
+
+  <!-- Carousel Script -->
+  <script>
+    (function () {
+      var currentSlide = 0;
+      var autoScrollInterval;
+      var slides = document.querySelectorAll('.carousel-images img');
+      var dots   = document.querySelectorAll('.carousel-dot');
+      var DELAY  = 5000;
+
+      function showSlide(index) {
+        if (index >= slides.length) currentSlide = 0;
+        if (index < 0) currentSlide = slides.length - 1;
+
+        for (var i = 0; i < slides.length; i++) slides[i].classList.remove('active');
+        for (var j = 0; j < dots.length; j++)   dots[j].classList.remove('active');
+
+        slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+      }
+
+      function startAutoScroll() {
+        autoScrollInterval = setInterval(function () {
+          currentSlide = (currentSlide + 1) % slides.length;
+          showSlide(currentSlide);
+        }, DELAY);
+      }
+
+      function resetAutoScroll() {
+        clearInterval(autoScrollInterval);
+        startAutoScroll();
+      }
+
+      window.changeSlide = function (direction) {
+        currentSlide += direction;
+        showSlide(currentSlide);
+        resetAutoScroll();
+      };
+
+      window.goToSlide = function (index) {
+        currentSlide = index;
+        showSlide(currentSlide);
+        resetAutoScroll();
+      };
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft')  window.changeSlide(-1);
+        if (e.key === 'ArrowRight') window.changeSlide(1);
+      });
+
+      var container = document.querySelector('.carousel-container');
+      if (container) {
+        container.addEventListener('mouseenter', function () { clearInterval(autoScrollInterval); });
+        container.addEventListener('mouseleave', startAutoScroll);
+      }
+
+      window.addEventListener('load', function () {
+        showSlide(0);
+        startAutoScroll();
+      });
+    }());
+  </script>
+
+</body>
+</html>

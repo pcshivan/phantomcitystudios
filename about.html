@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Work | Phantom City Studios</title>
+
+
+    <link rel="stylesheet" href="assets/css/main-styles.css" />
+    <link rel="stylesheet" href="assets/css/logo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Page-specific styles for a more polished look */
+        .work-container { 
+            padding: 40px 20px; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
+
+        /* Styling for the new ethos/vision section */
+        .ethos-section {
+            text-align: center;
+            padding: 60px 20px 80px 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 60px;
+        }
+
+        .ethos-section h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--accent-white);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .ethos-section p {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Styling for the project list */
+        .work-list { 
+            list-style: none; 
+            padding: 0; 
+        }
+
+        .work-item { 
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--accent-gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .work-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .work-item strong { 
+            font-size: 1.6rem; 
+            color: var(--accent-gold); 
+            display: block; 
+            margin-bottom: 10px;
+        }
+
+        .work-item em {
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Cinzel display font for headings */
+        .hero-section h1, .ethos-section h1, h1.page-title {
+          font-family: 'Cinzel', serif;
+          letter-spacing: 0.03em;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <nav class="nav-wrapper">
+            <a href="index.html" class="site-title visually-hidden">Phantom City Studios</a>
+        
+            <ul class="main-nav">
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+
+
+            </ul>
+        
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo-link" aria-label="Phantom City Studios Home">
+                  <img
+                    src="assets/images/phantom_logo.png"
+                    srcset="assets/images/phantom_logo@2x.png 2x"
+                    alt="Phantom City Studios"
+                    class="site-logo-img"
+                    decoding="async"
+                  >
+                </a>
+            </div>
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+        <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="portfolio.html">Portfolio</a></li>                
+            <li><a href="services.html">Services</a></li>
+            <li><a href="ourteam.html">Our Team</a></li>
+            <li><a href="faq.html">FAQ</a></li>                
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+        </ul>
+    </div>
+    <main class="work-container">
+        
+        <!-- New Ethos Section -->
+        <section class="ethos-section scroll-fade">
+            <h1>A Digital Dream Machine</h1>
+            <p>We are a futuristic creative powerhouse, transforming ideas into cinematic realities. By fusing AI visuals with original music and immersive storytelling, we build viral, visionary content that resonates with a GenZ-first world.</p>
+        </section>
+
+        <!-- Existing Projects List (with updated class names) -->
+        <ul class="work-list">
+            <li class="work-item scroll-fade">
+                <strong>The River of Time</strong> — An Epic Sci-Fi Romantic Thriller film based on causality, AI, and temporal paradox.<br/>
+                <em>“Love that rewrites time. A cosmic romance with quantum stakes. Ready for a major studio.”</em> — Movie Analyst
+            </li>
+            <li class="work-item scroll-fade" style="transition-delay: 0.2s;">
+                <strong>Astraverse</strong> — Pan-Indian AI cinematic universe concept.<br/>
+                <em>“The script and scenes feel like a spiritual successor to Bahubali. With AI, no less!”</em> — Film Critic
+            </li>
+            <li class="work-item scroll-fade" style="transition-delay: 0.4s;">
+                <strong>SwarVerse</strong> — AI education platform blending raga and rhythm.<br/>
+                <em>“The first time I saw music theory come alive like this.”</em> — Music Educator
+            </li>
+        </ul>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p class="footer-brand">Phantom City Studios</p>
+            <p class="footer-tagline">Where Vision Meets Velocity</p>
+            <p>&copy; 2026 Phantom City Studios. All Rights Reserved.</p>
+            <p><a href="mailto:contact@phantomcitystudios.com">contact@phantomcitystudios.com</a> &nbsp;|&nbsp; Chennai, Tamil Nadu, India</p>
+            <p>
+                <a href="/terms.html">Terms of Service</a> |
+                <a href="/privacy.html">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main-scripts.js"></script>
+    <script src="assets/js/phantomcity_chat_widget.js"></script>
+</body>
+</html>

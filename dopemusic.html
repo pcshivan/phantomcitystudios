@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dope Music | High on Sound</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================================
+           DOPE MUSIC - HIGH ON SOUND
+           Global Audio Label Experience
+        ========================================================= */
+
+        /* --- ROOT VARIABLES --- */
+        :root {
+            --primary-magenta: #E91E8C;
+            --primary-purple: #8B3FD9;
+            --primary-blue: #00D4FF;
+            --accent-cyan: #4DD0E1;
+            --background-deep: #030712;
+            --background-dark: #0F1419;
+            --surface-elevated: #1A1F2E;
+            --text-primary: #FAFAFA;
+            --text-secondary: #94A3B8;
+            --gold-accent: #FFB800;
+            --border-subtle: #1E293B;
+            --glow-magenta: rgba(233, 30, 140, 0.5);
+            --glow-blue: rgba(0, 212, 255, 0.4);
+        }
+
+        /* --- GLOBAL RESETS --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(180deg, var(--background-deep) 0%, var(--background-dark) 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+        }
+
+        /* --- ANIMATED GRADIENT BACKGROUND --- */
+        .gradient-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.12;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary-magenta), transparent);
+            top: -10%;
+            right: -5%;
+            animation-delay: 0s;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--primary-blue), transparent);
+            bottom: -15%;
+            left: -10%;
+            animation-delay: 7s;
+        }
+
+        .orb-3 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--primary-purple), transparent);
+            top: 40%;
+            left: 30%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(3, 7, 18, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: all 0.3s ease;
+            height: 100 px;
+        }
+
+        .main-header.scrolled {
+            background: rgba(3, 7, 18, 0.95);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px 1%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 100 px;
+            filter: brightness(1.2);
+        }
+
+        .logo-img {
+            height: 120px;
+            width: auto;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            overflow: hidden ; 
+            flex-grow: var(--surface-elevated) ;
+            
+     
+
+        }
+
+        .logo-link:hover .logo-img {
+            transform: scale(1.02);
+            filter: brightness(1.5);
+        }
+        /* KEEP your existing .logo-link position/structure intact. ADD these rules: */
+
+        /* Perfect circular Instagram-style mask */
+        .logo-mask {
+            width: 180px;              /* original logo container size */
+            height: 120px;             /* square = perfect circle */
+            border-radius: 50%;
+            overflow: hidden;
+            background: radial-gradient(circle, #1a0d2e 0%, #0f0f23 100%);
+            border: 2px solid rgba(255,255,255,0.12);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            position: relative;
+        }
+
+        /* Logo image 3x zoomed + perfectly centered */
+        .logo-img {
+            width: 160%;              /* 3x scale */
+            height: 160%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;        /* fills mask perfectly */
+            object-position: center;  /* centers the key visual area */
+            flood-color: #00D4FF;
+        }
+
+        /* Hover: subtle pulse */
+        .logo-link:hover .logo-img {
+            transform: translate(-50%, -50%) scale(1.95);
+        }
+
+        .main-nav {
+            list-style: none;
+            display: flex;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-magenta);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-magenta), var(--primary-blue));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .main-nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .cta-button {
+            padding: 12px 28px;
+            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-purple));
+            color: var(--text-primary);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(233, 30, 140, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(233, 30, 140, 0.5);
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+        }
+        /* --- CAROUSEL SECTION --- */
+        .carousel-section {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .carousel-container {
+            position: -webkit-sticky;
+            justify-self: center;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            max-height: 80vh;
+            border-radius: 40px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                0 0 40px var(--gold-glow);
+            border: 2px solid var(--accent-gold);
+
+        }
+
+        .carousel-images {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-images img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .carousel-images img.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        /* Glassmorphic Overlay */
+        .carousel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(
+                to top,
+                rgba(10, 10, 10, 0.95) 0%,
+                rgba(10, 10, 10, 0.7) 50%,
+                transparent 100%
+            );
+            padding: 40px;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .carousel-overlay h2 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+        }
+
+        .carousel-overlay p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        /* Carousel Controls */
+        .carousel-controls {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.2);
+        }
+
+        .carousel-dot.active {
+            background: var(--accent-gold);
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        /* Arrow Navigation */
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(10, 10, 10, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 3;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .carousel-arrow:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .carousel-arrow.prev {
+            left: 20px;
+        }
+
+        .carousel-arrow.next {
+            right: 20px;
+        }
+
+        .carousel-arrow svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 160px 5% 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-purple), var(--primary-blue));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 8s ease infinite;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-weight: 300;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-tagline .highlight {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .social-proof {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary-magenta);
+            transform: translateY(-2px);
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* --- CAROUSEL SECTION --- */
+        .carousel-section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 5%;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 40px;
+            animation: scroll-left 40s linear infinite;
+            width: max-content;
+        }
+
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .principle-card {
+            flex: 0 0 420px;
+            background: linear-gradient(135deg, rgba(26, 31, 46, 0.6), rgba(15, 20, 25, 0.4));
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 48px 36px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-magenta), var(--primary-purple), var(--primary-blue));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .principle-card:hover::before {
+            opacity: 1;
+        }
+
+        .principle-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(233, 30, 140, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 24px;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .principle-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .principle-card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* --- MANIFESTO SECTION --- */
+        .manifesto-section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .manifesto-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .manifesto-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: -1.5px;
+        }
+
+        .manifesto-text {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+        }
+
+        .manifesto-text.emphasis {
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .manifesto-statement {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .statement-line {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .statement-line:last-child {
+            background: linear-gradient(90deg, var(--primary-magenta), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, rgba(233, 30, 140, 0.1), rgba(139, 63, 217, 0.1));
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-content h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--primary-magenta), var(--primary-purple));
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(233, 30, 140, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(233, 30, 140, 0.6);
+        }
+
+        .btn-secondary {
+            padding: 16px 40px;
+            background: transparent;
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--primary-magenta);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-magenta);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(233, 30, 140, 0.4);
+        }
+
+        /* --- FOOTER --- */
+        .main-footer {
+            padding: 80px 5% 40px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            margin-bottom: 24px;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--surface-elevated);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .social-circle:hover {
+            background: var(--primary-magenta);
+            border-color: var(--primary-magenta);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(233, 30, 140, 0.4);
+        }
+
+        .footer-section h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-magenta);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 120px 5% 60px;
+            }
+
+            .principle-card {
+                flex: 0 0 320px;
+            }
+
+            .manifesto-statement {
+                gap: 16px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="main-header" id="header">
+        <div class="nav-container">
+            <!-- Replace ONLY your existing logo anchor with this: -->
+            <a href="#" class="logo-link">
+                <div class="logo-mask">
+                    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/79fd77f3-1dd0-4f3c-8a0a-99c3c6228e6c" 
+                        alt="Dope Music" 
+                        class="logo-img">
+                </div>
+            </a>
+
+            
+            <nav>
+                <ul class="main-nav">
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#manifesto">Manifesto</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#contact" class="cta-button">Listen Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <h1><p></p></h1>
+        <div class="hero-content">
+            <h1><p></p></h1>
+            <h1><p></p></h1>
+            <h1 style="font-style: oblique; padding-top: 8%; ">High on Sound</h1>
+            <p class="hero-tagline">
+                Where <span class="highlight">precision</span> meets artistry. Where every note carries <span class="highlight">intention</span>. Where sound transcends entertainment and becomes <span class="highlight">experience</span>.
+            </p>
+        </div>
+        <div class="social-proof">
+            <a href="https://youtube.com/@DopeMusicIndia" target="_blank" class="social-link">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                @DopeMusicIndia
+            </a>
+            <a href="https://instagram.com/DopeMusicIn" target="_blank" class="social-link">
+                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                @DopeMusicIn
+            </a>
+        </div>
+
+    </section>    
+    <section class="carousel-section scroll-fade">
+        <div class="carousel-container">
+            <div class="carousel-images">
+                <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1920&h=1080&fit=crop" alt="Concert Stage Performance" class="active">
+                <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=1920&h=1080&fit=crop" alt="Crowd at Concert">
+                <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=1920&h=1080&fit=crop" alt="Stage Lighting Design">
+                <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1920&h=1080&fit=crop" alt="Live Performance Energy">
+                <img src="https://images.unsplash.com/photo-1598387993441-a364f854c3e1?w=1920&h=1080&fit=crop" alt="Concert Production">
+                <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1920&h=1080&fit=crop" alt="Festival Atmosphere">
+            </div>
+
+            <!-- Overlay Content -->
+            <div class="carousel-overlay">
+                <h2>High on Music</h2>
+            </div>
+
+            <!-- Navigation Arrows -->
+            <div class="carousel-arrow prev" onclick="changeSlide(-1)">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                </svg>
+            </div>
+            <div class="carousel-arrow next" onclick="changeSlide(1)">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </div>
+
+            <!-- Dot Controls -->
+            <div class="carousel-controls">
+                <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+                <span class="carousel-dot" onclick="goToSlide(1)"></span>
+                <span class="carousel-dot" onclick="goToSlide(2)"></span>
+                <span class="carousel-dot" onclick="goToSlide(3)"></span>
+                <span class="carousel-dot" onclick="goToSlide(4)"></span>
+                <span class="carousel-dot" onclick="goToSlide(5)"></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Philosophy Carousel -->
+    <section class="carousel-section" id="philosophy">
+        <div class="section-header">
+            <h2>Our Philosophy</h2>
+            <p>Every element engineered for impact. Every moment designed to resonate.</p>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- First Set -->
+                <div class="principle-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Precision Over Noise</h3>
+                    <p>We don't follow trends. We architect timeless soundscapes where every frequency serves purpose, every beat carries weight.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">🌍</div>
+                    <h3>Global Resonance</h3>
+                    <p>Sound transcends borders. Our work speaks the universal language of emotion, connecting cultures through meticulously crafted audio.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Intentional Design</h3>
+                    <p>From film scores to digital content, every note is deliberate. Every silence, calculated. Nothing exists without purpose.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">🎭</div>
+                    <h3>Emotion First</h3>
+                    <p>Technology serves artistry. We leverage innovation not for spectacle, but to deepen human connection through sound.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">💎</div>
+                    <h3>Quality Absolute</h3>
+                    <p>We don't compromise. Every project receives the attention reserved for masterpieces, regardless of scale.</p>
+                </div>
+                <!-- Duplicate Set for Infinite Scroll -->
+                <div class="principle-card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Precision Over Noise</h3>
+                    <p>We don't follow trends. We architect timeless soundscapes where every frequency serves purpose, every beat carries weight.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">🌍</div>
+                    <h3>Global Resonance</h3>
+                    <p>Sound transcends borders. Our work speaks the universal language of emotion, connecting cultures through meticulously crafted audio.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Intentional Design</h3>
+                    <p>From film scores to digital content, every note is deliberate. Every silence, calculated. Nothing exists without purpose.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">🎭</div>
+                    <h3>Emotion First</h3>
+                    <p>Technology serves artistry. We leverage innovation not for spectacle, but to deepen human connection through sound.</p>
+                </div>
+                <div class="principle-card">
+                    <div class="card-icon">💎</div>
+                    <h3>Quality Absolute</h3>
+                    <p>We don't compromise. Every project receives the attention reserved for masterpieces, regardless of scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manifesto Section -->
+    <section class="manifesto-section" id="manifesto">
+        <div class="manifesto-content">
+            <h2>The Manifesto</h2>
+            <p class="manifesto-text">
+                In an era saturated with content, we choose <strong>intention</strong> over volume.
+            </p>
+            <p class="manifesto-text">
+                Where others chase virality, we pursue <strong>resonance</strong>. Where markets demand speed, we deliver <strong>permanence</strong>.
+            </p>
+            <p class="manifesto-text emphasis">
+                Sound is not background. It is the architecture of experience—the invisible force that shapes how people feel, remember, and connect.
+            </p>
+            <p class="manifesto-text">
+                From music production to film scoring, from sonic branding to immersive audio, we operate at the intersection of art and science. Every project is an opportunity to elevate listening from passive consumption to active transformation.
+            </p>
+            <div class="manifesto-statement">
+                <div class="statement-line">We are not loud.</div>
+                <div class="statement-line">We are precise.</div>
+                <div class="statement-line">We are high on sound.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-content">
+            <h2>Let's Create Something Extraordinary</h2>
+            <p>Whether you're a brand seeking sonic identity or an artist chasing perfection, we're here to elevate your vision.</p>
+            <div class="cta-buttons">
+                <a href="mailto:contact@dopemusic.com" class="btn-primary">Start a Project</a>
+                <a href="https://youtube.com/@DopeMusicIndia" target="_blank" class="btn-secondary">Explore Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo-link">
+                    <div class="logo-mask">
+                        <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/79fd77f3-1dd0-4f3c-8a0a-99c3c6228e6c" 
+                            alt="Dope Music" 
+                            class="logo-img">
+                    </div>
+                </a>
+    
+                <p>Elevating sound from entertainment to experience. Precision-crafted audio for film, music, and digital content.</p>
+                <div class="footer-socials">
+                    <a href="https://youtube.com/@DopeMusicIndia" target="_blank" class="social-circle" aria-label="YouTube">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/DopeMusicIn" target="_blank" class="social-circle" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#">Music Production</a></li>
+                    <li><a href="#">Film Scoring</a></li>
+                    <li><a href="#">Sonic Branding</a></li>
+                    <li><a href="#">Audio Post-Production</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="mailto:contact@dopemusic.com">contact@dopemusic.com</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Dope Music. All rights reserved. High on Sound&trade;</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        <!-- JavaScript for Carousel -->
+
+        // Carousel Configuration
+        let currentSlide = 0;
+        let autoScrollInterval;
+        const slides = document.querySelectorAll('.carousel-images img');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const autoScrollDelay = 5000; // 5 seconds
+
+        // Initialize Carousel
+        function initCarousel() {
+            showSlide(currentSlide);
+            startAutoScroll();
+        }
+
+        // Show Specific Slide
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            if (index >= slides.length) currentSlide = 0;
+            if (index < 0) currentSlide = slides.length - 1;
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Change Slide
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+            resetAutoScroll();
+        }
+
+        // Go to Specific Slide
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+            resetAutoScroll();
+        }
+
+        // Auto-Scroll Functions
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                currentSlide++;
+                if (currentSlide >= slides.length) currentSlide = 0;
+                showSlide(currentSlide);
+            }, autoScrollDelay);
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+        });
+
+        // Pause on Hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoScrollInterval);
+        });
+        carouselContainer.addEventListener('mouseleave', () => {
+            startAutoScroll();
+        });
+
+        // Scroll Fade-In Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize on Load
+        window.addEventListener('load', initCarousel);
+
+    </script>
+</body>
+</html>

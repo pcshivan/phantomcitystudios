@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Contact - Phantom City Studios</title>
+
+
+    <link rel="stylesheet" href="assets/css/main-styles.css" />
+    <link rel="stylesheet" href="assets/css/phantom-styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/logo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Cinzel display font for headings */
+    .hero-section h1, .ethos-section h1, h1.page-title {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="nav-wrapper">
+            <a href="index.html" class="site-title visually-hidden">Phantom City Studios</a>
+        
+            <ul class="main-nav">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="ourteam.html">Our Team</a></li>
+
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html"  class="active">Contact</a></li>
+                <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+
+
+            </ul>
+        
+            <div class="logo-wrapper">
+                <a href="index.html" class="logo-link" aria-label="Phantom City Studios Home">
+                  <img
+                    src="assets/images/phantom_logo.png"
+                    srcset="assets/images/phantom_logo@2x.png 2x"
+                    alt="Phantom City Studios"
+                    class="site-logo-img"
+                    decoding="async"
+                  >
+                </a>
+            </div>
+            <!-- Hamburger Menu Button -->
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+        <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav">
+        <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>                
+            <li><a href="services.html">Services</a></li>
+            <li><a href="ourteam.html">Our Team</a></li>
+            <li><a href="faq.html">FAQ</a></li>                
+            <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+        </ul>
+    </div>
+
+    <main class="contact-container">
+        <div class="contact-grid scroll-fade">
+            <!-- Left Column: Info & Social Proof -->
+            <div class="contact-info">
+                <h2>Start a Conversation.</h2>
+                <p>We partner with ambitious brands and visionaries to create work that resonates. Whether you have a detailed brief or a spark of an idea, we're here to help shape it. Let us know how we can help.</p>
+                <ul class="contact-details">
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:contact@phantomcitystudios.com">contact@phantomcitystudios.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Chennai, India | Servicing Globally</span>
+                    </li>
+                </ul>
+                <div class="contact-socials">
+                    <a href="https://www.youtube.com/@phantomcitystudios" target="_blank" class="fab fa-youtube" aria-label="YouTube"></a>
+                    <a href="https://www.instagram.com/phantomcitystudiosindia?igsh=MTNyb2JvZGJ2bWlyZQ%3D%3D&utm_source=qr" target="_blank" class="fab fa-instagram" aria-label="Instagram"></a>
+                    <a href="https://www.twitter.com/phantomcitystud" target="_blank" class="fab fa-twitter" aria-label="Twitter"></a>
+                </div>
+            </div>
+
+            <!-- Right Column: The Form -->
+            <div class="contact-form-container">
+                <form id="contact-form" action="" method="POST">
+                    <div class="form-group">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" id="full-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Company Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service-selection">I'm interested in...</label>
+                        <select id="service-selection" name="service_interest" required>
+                            <option value="" disabled selected>-- Select a Service --</option>
+                            <optgroup label="AI Video Production">
+                                <option value="AI-Ignite">IGNITE</option>
+                                <option value="AI-Elevate">ELEVATE</option>
+                                <option value="AI-Dominion">DOMINION</option>
+                            </optgroup>
+                            <optgroup label="Original Music & Audio Design">
+                                <option value="Sonic-Spark">Sonic Spark</option>
+                                <option value="Anthem-Package">Anthem</option>
+                                <option value="Immersion-Package">Sonic Immersion</option>
+                            </optgroup>
+                            <optgroup label="Creative Branding & Strategy">
+                                <option value="Brand-Ignition">BRAND IGNITION</option>
+                                <option value="Brand-Ascension">BRAND ASCENSION</option>
+                                <option value="Brand-Dominion">BRAND DOMINION</option>
+                            </optgroup>
+                            <optgroup label="Voice AI & Accents">
+                                <option value="Voice-Clone">VOICE CLONE</option>
+                                <option value="Voice-AccentSync">ACCENT EXCEL</option>
+                                <option value="Voice-Architect">VOICE ARCHITECT</option>
+                            </optgroup>
+                            <option value="General-Inquiry">A General Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="project-details">Tell us about your project</label>
+                        <textarea id="project-details" name="details" rows="6" required placeholder="What are your goals? What does success look like for this project?"></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Initiate Contact</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <p class="footer-brand">Phantom City Studios</p>
+            <p class="footer-tagline">Where Vision Meets Velocity</p>
+            <p>&copy; 2026 Phantom City Studios. All Rights Reserved.</p>
+            <p><a href="mailto:contact@phantomcitystudios.com">contact@phantomcitystudios.com</a> &nbsp;|&nbsp; Chennai, Tamil Nadu, India</p>
+            <p>
+                <a href="terms.html">Terms of Service</a> |
+                <a href="privacy.html">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/js/main-scripts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const FORM_ENDPOINT = "https://formspree.io/f/xldnnovk";
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.setAttribute('action', FORM_ENDPOINT);
+            }
+
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const selectedPackage = urlParams.get('package');
+                const serviceSelect = document.getElementById('service-selection');
+                if (selectedPackage && serviceSelect.querySelector(`[value="${selectedPackage}"]`)) {
+                    serviceSelect.value = selectedPackage;
+                }
+            } catch (e) {
+                console.error("Error handling URL parameters on contact page:", e);
+            }
+        });
+    </script>
+    <script src="assets/js/phantomcity_chat_widget.js"></script>
+</body>
+</html>
