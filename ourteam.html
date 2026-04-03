@@ -1,152 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team - Phantom City Studios</title>
-    <!-- Link to the single, corrected stylesheet -->
-  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team | Phantom City Studios</title>
 
-    <link rel="stylesheet" href="assets/css/main-styles.css">
-    <link rel="stylesheet" href="assets/css/logo.css">
+  <link rel="stylesheet" href="assets/css/main-styles.css">
+  <link rel="stylesheet" href="assets/css/logo.css">
+  <link rel="stylesheet" href="assets/css/studio-luxe.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* Cinzel display font for headings */
-    .hero-section h1, .ethos-section h1, h1.page-title {
-      font-family: 'Cinzel', serif;
-      letter-spacing: 0.03em;
-    }
-  </style>
-
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="studio-page team-page">
+  <header class="main-header">
+    <nav class="nav-wrapper" aria-label="Primary Navigation">
+      <a href="index.html" class="site-title visually-hidden">Phantom City Studios</a>
 
-    <header class="main-header">
-        <nav class="nav-wrapper">
-            <a href="index.html" class="site-title visually-hidden">Phantom City Studios</a>
-        
-            <ul class="main-nav">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="ourteam.html"  class="active">Our Team</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+      <ul class="main-nav">
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="ourteam.html" class="active">Our Team</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="http://phantomconcerts.in" class="agents-link">Phantom Concerts</a></li>
+      </ul>
 
-            </ul>
-        
-            <div class="logo-wrapper">
-                <a href="index.html" class="logo-link" aria-label="Phantom City Studios Home">
-                <img src="assets/images/phantom_logo.png"
-                    srcset="assets/images/phantom_logo@2x.png 2x"
-                    alt="Phantom City Studios"
-                    class="site-logo-img"
-                    decoding="async"
-                    >
-                </a>
-            </div>
-            <!-- Hamburger Menu Button -->
-            <button class="hamburger-menu" aria-label="Toggle menu">
-                <span></span><span></span><span></span>
-            </button>
-        </nav>
-    </header>
+      <div class="logo-wrapper">
+        <a href="index.html" class="logo-link" aria-label="Phantom City Studios Home">
+          <img
+            src="assets/images/phantom_logo.png"
+            srcset="assets/images/phantom_logo@2x.png 2x"
+            alt="Phantom City Studios"
+            class="site-logo-img"
+            decoding="async">
+        </a>
+      </div>
 
-        <!-- Mobile Navigation Overlay -->
-    <div class="mobile-nav">
-        <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>                
-            <li><a href="services.html">Services</a></li>
-            <li><a href="faq.html">FAQ</a></li>                
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
-        </ul>
-    </div>
-    
-    <main>
-        <section class="hero-section scroll-fade">
-            <h1>The Architects of Imagination</h1>
-            <p class="subtitle">Meet the multidisciplinary minds behind Phantom City Studios, a collective of artists, strategists, and technologists dedicated to pioneering the future of creative content.</p>
+      <button class="hamburger-menu" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
 
-            <section class="team-section">
-                <div class="team-grid">
-                    <!-- Team Member: PC Shivan -->
-                    <div class="team-card scroll-fade">
-                        <div class="team-card-img">
-                            <img src="assets/images/pcs.jpg" alt="PC Shivan">
-                        </div>
-                        <h3>PC Shivan</h3>
-                        <span class="title">Founder, CEO & CTO</span>
-                        <p>The visionary engine of the studio, Shivan merges deep-tech expertise with a cinematic eye. His leadership drives the fusion of AI innovation and compelling storytelling that defines our work.</p>
-                    </div>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="http://phantomconcerts.in" class="agents-link">Phantom Concerts</a></li>
+    </ul>
+  </div>
 
-                    <!-- Team Member: Aditya R -->
-                    <div class="team-card scroll-fade" style="transition-delay: 0.2s;">
-                        <div class="team-card-img">
-                            <img src="assets/images/aditya.jpg" alt="Aditya R">
-                        </div>
-                        <h3>Aditya R</h3>
-                        <span class="title">Chief Operating Officer (COO)</span>
-                        <p>Aditya is the operational backbone, ensuring every project flows seamlessly from concept to delivery. His strategic oversight guarantees that creative ambition is met with flawless execution and client success.</p>
-                    </div>
-                </div>
+  <main class="page-shell">
+    <section class="page-intro scroll-fade">
+      <p class="page-kicker">The Team</p>
+      <h1 class="page-title">The Architects of Imagination!</h1>
+      <p class="page-lead">
+        Meet the multidisciplinary minds behind Phantom City Studios, a collective of artists,<br>
+         strategists, and technologists shaping the future of AI-powered creative production.
+      </p>
+    </section>
 
-                <div class="team-grid">
-                  <!-- Team Member: Vaikunth Kasturirangan -->
-                  <div class="team-card scroll-fade" style="transition-delay: 0.3s;">
-                    <div class="team-card-img">
-                      <img src="assets/images/vaikunth.jpg" alt="Vaikunth Kasturirangan">
-                    </div>
-                    <h3>Vaikunth Kasturirangan</h3>
-                    <span class="title">Chief Business Officer (CBO)</span>
-                    <p>Vaikunth is a passionate leader with an infectious energy that naturally commands attention. A man of action who walks the talk, he is a fearless risk-taker, go-getter with deep business acumen. A true people person and a strong believer, he drives momentum by turning vision into decisive execution.</p>
-                  </div>
-                
-                  <!-- Team Member: Arun -->
-                  <div class="team-card scroll-fade" style="transition-delay: 0.5s;">
-                    <div class="team-card-img">
-                      <img src="assets/images/arun.jpg" alt="Arun Kumar">
-                    </div>
-                    <h3>Arun Kumar</h3>
-                    <span class="title">Chief Marketing Officer (CMO)</span>
-                    <p>The architect of our commercial success, Arun is a dynamic force powering our market growth and sales. A natural people-person, he forges powerful connections and translates audacious goals into market-beating results.</p>
-                  </div>
-                </div>
-                <div class="team-grid">
-                  <!-- Team Member: Dakshin -->
-                  <div class="team-card scroll-fade" style="transition-delay: 0.6s;">
-                    <div class="team-card-img">
-                      <img src="assets/images/dakshin.jpg" alt="Dakshin">
-                    </div>
-                    <h3>Dakshin</h3>
-                    <span class="title">Chief Product Officer (CPO)</span>
-                    <p>As the master of product and creative integrity, Dakshin shapes the final look and feel of every asset. He bridges the gap between raw technology and polished, market-ready creative products.</p>
-                  </div>
-                </div>
-
-            </section>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-inner">
-            <p class="footer-brand">Phantom City Studios</p>
-            <p class="footer-tagline">Where Vision Meets Velocity</p>
-            <p>&copy; 2026 Phantom City Studios. All Rights Reserved.</p>
-            <p><a href="mailto:contact@phantomcitystudios.com">contact@phantomcitystudios.com</a> &nbsp;|&nbsp; Chennai, Tamil Nadu, India</p>
-            <p>
-                <a href="terms.html">Terms of Service</a> |
-                <a href="privacy.html">Privacy Policy</a>
-            </p>
+    <section class="team-section">
+      <div class="team-grid">
+        <div class="team-card scroll-fade">
+          <div class="team-card-img">
+            <img src="assets/images/pcs.jpg" alt="PC Shivan">
+          </div>
+          <h3>PC Shivan</h3>
+          <span class="title">Founder, CEO &amp; CTO</span>
+          <p>Sets the studio's creative and technical direction, turning AI capability into cinematic language, original IP, and decisive brand worlds.</p>
         </div>
-    </footer>
 
-    <!-- This script is NECESSARY for the scroll-fade animations to work -->
-    <script src="assets/js/main-scripts.js"></script>
-    <script src="assets/js/phantomcity_chat_widget.js"></script>
+        <div class="team-card scroll-fade">
+          <div class="team-card-img">
+            <img src="assets/images/aditya.jpg" alt="Aditya R">
+          </div>
+          <h3>Aditya R</h3>
+          <span class="title">Chief Operating Officer</span>
+          <p>Builds the operational spine of the studio, converting creative ambition into disciplined execution across teams, timelines, and delivery.</p>
+        </div>
+
+        <div class="team-card scroll-fade">
+          <div class="team-card-img">
+            <img src="assets/images/vaikunth.jpg" alt="Vaikunth Kasturirangan">
+          </div>
+          <h3>Vaikunth Kasturirangan</h3>
+          <span class="title">Chief Business Officer</span>
+          <p>Drives strategic partnerships, commercial growth, and expansion with a sharp instinct for scale, positioning, and market opportunity.</p>
+        </div>
+
+        <div class="team-card scroll-fade">
+          <div class="team-card-img">
+            <img src="assets/images/arun.jpg" alt="Arun Kumar">
+          </div>
+          <h3>Arun Kumar</h3>
+          <span class="title">Chief Marketing Officer</span>
+          <p>Shapes brand momentum, market voice, and outreach architecture so the studio's work lands with clarity, relevance, and cultural charge.</p>
+        </div>
+
+        <div class="team-card scroll-fade">
+          <div class="team-card-img">
+            <img src="assets/images/dakshin.jpg" alt="Dakshin">
+          </div>
+          <h3>Dakshin</h3>
+          <span class="title">Chief Product Officer</span>
+          <p>Leads product quality and experience design, refining complex AI workflows into polished systems, sharp outputs, and market-facing experiences.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-brand">Phantom City Studios</p>
+      <p class="footer-tagline">Where Vision Meets Velocity</p>
+      <p>&copy; <span data-current-year></span> Phantom City Studios. All Rights Reserved.</p>
+      <p><a href="mailto:contact@phantomcitystudios.com">contact@phantomcitystudios.com</a> &nbsp;|&nbsp; Chennai, Tamil Nadu, India</p>
+      <p>
+        <a href="terms.html">Terms of Service</a> |
+        <a href="privacy.html">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main-scripts.js"></script>
 </body>
 </html>

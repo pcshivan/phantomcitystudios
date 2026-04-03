@@ -1,80 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Studio Blog | Phantom City Studios</title>
-  <meta name="description" content="Explore the Phantom City Studios blog — behind-the-scenes production breakdowns, AI animation experiments, sound design theory, and the future of cinematic art.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Journal | Phantom City Studios</title>
+  <meta name="description" content="Explore the Phantom City Studios journal for production insights, cinematic strategy, AI workflow thinking, and brand-led creative direction.">
   <meta name="robots" content="index, follow">
 
+  <link rel="stylesheet" href="assets/css/main-styles.css">
+  <link rel="stylesheet" href="assets/css/logo.css">
+  <link rel="stylesheet" href="assets/css/studio-luxe.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="assets/css/main-styles.css" />
-  <link rel="stylesheet" href="assets/css/logo.css">
-
-  <style>
-    .blog-hero {
-      text-align: center;
-      padding: 100px 20px 60px;
-    }
-
-    .blog-hero h1 {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 900;
-      color: var(--accent-gold);
-      letter-spacing: 0.04em;
-      margin-bottom: 20px;
-      text-shadow: 0 0 30px var(--gold-glow);
-    }
-
-    .blog-hero p {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--text-secondary);
-      max-width: 760px;
-      margin: 0 auto 16px auto;
-      line-height: 1.8;
-    }
-
-    .blog-coming-soon {
-      max-width: 700px;
-      margin: 60px auto 120px auto;
-      padding: 60px 40px;
-      text-align: center;
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      background: var(--surface-color);
-    }
-
-    .blog-coming-soon p {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      line-height: 1.8;
-    }
-
-    .blog-coming-soon .accent {
-      color: var(--accent-blue);
-      font-weight: 600;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oxanium:wght@400;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-
-  <!-- Animated Background Blob -->
-  <div class="blob-wrapper">
-    <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#ffcc00">
-        <animate attributeName="d" dur="12s" repeatCount="indefinite"
-          values="M300,350 Q400,450 500,300 Q400,150 300,250 Q200,350 100,300 Q200,150 300,250 Z;
-                  M300,300 Q450,350 500,250 Q400,100 300,200 Q200,300 100,250 Q150,400 300,300 Z;
-                  M300,350 Q400,450 500,300 Q400,150 300,250 Q200,350 100,300 Q200,150 300,250 Z"/>
-      </path>
-    </svg>
-  </div>
-
-  <!-- Header — brand-consistent -->
+<body class="studio-page blog-page">
   <header class="main-header">
     <nav class="nav-wrapper" aria-label="Primary Navigation">
       <a href="index.html" class="site-title visually-hidden">Phantom City Studios</a>
@@ -86,8 +26,7 @@
         <li><a href="ourteam.html">Our Team</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+        <li><a href="http://phantomconcerts.in" class="agents-link">Phantom Concerts</a></li>
       </ul>
 
       <div class="logo-wrapper">
@@ -107,7 +46,6 @@
     </nav>
   </header>
 
-  <!-- Mobile Navigation Overlay -->
   <div class="mobile-nav">
     <ul>
       <li><a href="about.html">About Us</a></li>
@@ -116,32 +54,35 @@
       <li><a href="ourteam.html">Our Team</a></li>
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="concerts.html" class="agents-link">Phantom Concerts</a></li>
+      <li><a href="http://phantomconcerts.in" class="agents-link">Phantom Concerts</a></li>
     </ul>
   </div>
 
-  <!-- Blog Hero -->
-  <section class="blog-hero scroll-fade">
-    <h1>Studio Blog</h1>
-    <p>Explore our journey at the cutting edge of creativity — from AI animation and sound design theory to behind-the-scenes breakdowns of cinematic productions.</p>
-    <p>Follow the experiments, breakthroughs, and vision of the studio building the future of art.</p>
-  </section>
+  <main class="page-shell">
+    <section class="blog-hero scroll-fade">
+      <p class="page-kicker">Studio Journal</p>
+      <h1>Strategy, craft, and production intelligence from Phantom City Studios!</h1>
+      <p>Forthcoming entries will cover cinematic AI workflows, campaign design logic, audio direction, visual systems, and the branding decisions behind premium content execution.</p>
+    </section>
 
-  <!-- Coming Soon placeholder -->
-  <div class="blog-coming-soon scroll-fade">
-    <p><span class="accent">Dispatches from the frontier.</span> Our editorial archive is being curated. Return soon for in-depth perspectives on AI-powered production, cinematic storytelling, and the evolving landscape of creative technology.</p>
-  </div>
+    <div class="blog-coming-soon scroll-fade">
+      <p><span class="accent">Editorial rollout in progress.</span> The journal is being curated to showcase the studio’s point of view on modern content production, visual direction, and the next chapter of brand storytelling.</p>
+    </div>
+  </main>
 
   <footer>
     <div class="footer-inner">
       <p class="footer-brand">Phantom City Studios</p>
       <p class="footer-tagline">Where Vision Meets Velocity</p>
-      <p>&copy; 2026 Phantom City Studios. All Rights Reserved.</p>
-      <p><a href="mailto:info@phantomcitystudios.com">info@phantomcitystudios.com</a> &nbsp;|&nbsp; Chennai, Tamil Nadu, India</p>
+      <p>&copy; <span data-current-year></span> Phantom City Studios. All Rights Reserved.</p>
+      <p><a href="mailto:contact@phantomcitystudios.com">contact@phantomcitystudios.com</a> &nbsp;|&nbsp; Chennai, Tamil Nadu, India</p>
+      <p>
+        <a href="terms.html">Terms of Service</a> |
+        <a href="privacy.html">Privacy Policy</a>
+      </p>
     </div>
   </footer>
 
   <script src="assets/js/main-scripts.js"></script>
-  <script src="assets/js/phantomcity_chat_widget.js"></script>
 </body>
 </html>
