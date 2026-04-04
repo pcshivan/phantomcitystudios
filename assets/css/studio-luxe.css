@@ -38,6 +38,7 @@ html {
   color: var(--studio-text);
   font-family: "Manrope", sans-serif;
   line-height: 1.6;
+  background-color: var(--studio-bg);
   background:
     radial-gradient(circle at 12% 8%, rgba(32, 208, 255, 0.13), transparent 28%),
     radial-gradient(circle at 88% 10%, rgba(255, 53, 203, 0.11), transparent 24%),
@@ -62,6 +63,7 @@ html {
     linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
   background-size: 120px 120px;
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, black 50%, transparent 88%);
   mask-image: radial-gradient(circle at center, black 0%, black 50%, transparent 88%);
   opacity: 0.34;
 }
@@ -142,6 +144,7 @@ html {
   border: 1px solid var(--studio-line);
   border-radius: var(--studio-radius-lg);
   background: linear-gradient(180deg, rgba(12, 18, 42, 0.8), rgba(8, 12, 28, 0.54));
+  -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
   box-shadow: var(--studio-shadow-soft);
 }
@@ -234,6 +237,7 @@ html {
   background: linear-gradient(90deg, var(--studio-gold) 0%, #fff0fb 18%, var(--studio-fuchsia) 44%, var(--studio-violet) 72%, var(--studio-blue) 100%);
   -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
@@ -335,6 +339,7 @@ html {
   z-index: 1200;
   background: rgba(5, 9, 20, 0.72);
   border-bottom: 1px solid rgba(91, 136, 255, 0.12);
+  -webkit-backdrop-filter: blur(22px);
   backdrop-filter: blur(22px);
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
   transition:
@@ -546,6 +551,7 @@ html {
     radial-gradient(circle at top left, rgba(32, 208, 255, 0.12), transparent 28%),
     radial-gradient(circle at top right, rgba(255, 208, 108, 0.14), transparent 24%),
     rgba(3, 6, 15, 0.96);
+  -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
   opacity: 0;
   visibility: hidden;
@@ -587,13 +593,19 @@ html {
 
 .studio-page .scroll-fade,
 .studio-page [data-reveal] {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: none;
   transition: opacity 760ms ease, transform 760ms ease;
 }
 
-.studio-page .scroll-fade.visible,
-.studio-page [data-reveal].is-visible {
+.studio-page.has-scroll-reveal .scroll-fade,
+.studio-page.has-scroll-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.studio-page.has-scroll-reveal .scroll-fade.visible,
+.studio-page.has-scroll-reveal [data-reveal].is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -622,6 +634,7 @@ html {
 .home-page .hero-backdrop {
   inset: 0.6rem 0 0;
   border-radius: 42px;
+  background-color: rgba(8, 12, 28, 0.78);
   background:
     linear-gradient(180deg, rgba(10, 16, 35, 0.82), rgba(4, 7, 17, 0.42)),
     radial-gradient(circle at 20% 0%, rgba(32, 208, 255, 0.1), transparent 28%),
@@ -636,6 +649,7 @@ html {
     linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 90px 90px;
   opacity: 0.22;
+  -webkit-mask-image: radial-gradient(circle at center, black 0%, black 58%, transparent 96%);
   mask-image: radial-gradient(circle at center, black 0%, black 58%, transparent 96%);
 }
 
@@ -876,6 +890,7 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 18px;
   background: rgba(5, 9, 20, 0.7);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   color: var(--studio-text-soft);
 }
@@ -959,6 +974,7 @@ html {
   overflow: hidden;
   border: 1px solid rgba(104, 231, 255, 0.16);
   border-radius: 999px;
+  background-color: rgba(10, 16, 35, 0.78);
   background: linear-gradient(90deg, rgba(255, 53, 203, 0.1), rgba(255, 255, 255, 0.03), rgba(32, 208, 255, 0.1));
   box-shadow: var(--studio-shadow-soft);
 }
@@ -976,6 +992,7 @@ html {
 .home-page .signal-band-viewport {
   position: relative;
   overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
   mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
 }
 
@@ -1277,6 +1294,7 @@ html {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }
 
