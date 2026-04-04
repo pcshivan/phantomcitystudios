@@ -30,6 +30,11 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--studio-bg);
+}
+
+body.studio-page {
+  background-color: var(--studio-bg);
 }
 
 .studio-page {
@@ -47,6 +52,34 @@ html {
     linear-gradient(180deg, #070b17 0%, #040711 46%, #020308 100%);
   overflow-x: hidden;
   position: relative;
+}
+
+[data-theme="light"] body.studio-page {
+  background-color: var(--studio-bg);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(32, 208, 255, 0.13), transparent 28%),
+    radial-gradient(circle at 88% 10%, rgba(255, 53, 203, 0.11), transparent 24%),
+    radial-gradient(circle at 52% 32%, rgba(138, 99, 255, 0.09), transparent 26%),
+    radial-gradient(circle at 80% 70%, rgba(255, 208, 108, 0.08), transparent 24%),
+    linear-gradient(180deg, #070b17 0%, #040711 46%, #020308 100%);
+  color: var(--studio-text);
+}
+
+[data-theme="light"] body.studio-page .main-header,
+[data-theme="light"] body.studio-page .mobile-nav,
+[data-theme="light"] body.studio-page .team-card,
+[data-theme="light"] body.studio-page .package-card,
+[data-theme="light"] body.studio-page .project-card,
+[data-theme="light"] body.studio-page .work-item,
+[data-theme="light"] body.studio-page .metric-card,
+[data-theme="light"] body.studio-page .spotlight-panel,
+[data-theme="light"] body.studio-page .hero-next-card,
+[data-theme="light"] body.studio-page .contact-info,
+[data-theme="light"] body.studio-page .contact-form-container,
+[data-theme="light"] body.studio-page .faq-item,
+[data-theme="light"] body.studio-page .content-section,
+[data-theme="light"] body.studio-page footer {
+  color: inherit;
 }
 
 .studio-page::before,

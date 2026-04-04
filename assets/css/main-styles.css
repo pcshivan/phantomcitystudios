@@ -1,7 +1,6 @@
 /*
   Phantom City Studios - Main Stylesheet
   Version: 2.0
-  Author: Gemini AI
 */
 
 /* --- FONT & GLOBAL IMPORTS ---
@@ -1105,4 +1104,10 @@ footer a:hover {
   box-shadow: 0 0 14px rgba(0, 120, 168, 0.4);
 }
 
-
+/* Keep Phantom City Studio pages on the dark presentation even if a cached
+   theme attribute is present. The luxe stylesheet refines this further. */
+body.studio-page,
+[data-theme="light"] body.studio-page {
+  background: linear-gradient(180deg, #070b17 0%, #040711 46%, #020308 100%);
+  color: #f3f6ff;
+}
