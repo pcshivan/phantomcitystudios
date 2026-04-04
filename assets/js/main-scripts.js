@@ -1,15 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
-  setupHeaderState();
-  setupNavigation();
-  setupRevealAnimations();
-  setupAmbientPointer();
-  setupImageShowcase();
-  setupTiltCard();
-  setupFaqAccordion();
-  setupContactPackagePrefill();
-  setupSoundToggleLabels();
-  setCurrentYear();
+  runSafely(setupHeaderState);
+  runSafely(setupNavigation);
+  runSafely(setupRevealAnimations);
+  runSafely(setupAmbientPointer);
+  runSafely(setupImageShowcase);
+  runSafely(setupTiltCard);
+  runSafely(setupFaqAccordion);
+  runSafely(setupContactPackagePrefill);
+  runSafely(setupSoundToggleLabels);
+  runSafely(setCurrentYear);
 });
+
+function runSafely(setupFn) {
+  try {
+    setupFn();
+  } catch (error) {
+    console.error(`Unable to initialize ${setupFn.name || "page behavior"}.`, error);
+  }
+}
 
 function setupNavigation() {
   const hamburger = document.querySelector(".hamburger-menu");
@@ -112,6 +120,14 @@ function setupRevealAnimations() {
 
     observer.observe(item);
   });
+
+  window.setTimeout(() => {
+    const hasVisibleItems = revealItems.some((item) => item.classList.contains("visible") || item.classList.contains("is-visible"));
+
+    if (!hasVisibleItems) {
+      revealItems.forEach(showItem);
+    }
+  }, 900);
 }
 
 function setupAmbientPointer() {
