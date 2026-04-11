@@ -87,18 +87,32 @@
       </div>
 
       <div class="contact-form-container">
-        <form id="contact-form" action="" method="POST">
+        <form id="contact-form" action="https://formspree.io/f/xldnnovk" method="POST">
+          <input type="hidden" name="_subject" value="New Phantom City Studios Contact Enquiry">
+          <input type="hidden" name="page_title" value="Contact | Phantom City Studios">
+          <input type="hidden" name="page_url" value="">
+          <input type="hidden" name="service_interest_label" value="">
+          <input type="hidden" name="selected_package" value="">
+          <input type="hidden" name="submitted_at" value="">
           <div class="form-group">
             <label for="full-name">Full Name</label>
-            <input type="text" id="full-name" name="name" required>
+            <input type="text" id="full-name" name="name" autocomplete="name" required>
           </div>
           <div class="form-group">
             <label for="email">Company Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" autocomplete="email" required>
           </div>
           <div class="form-group">
             <label for="mobile">Mobile</label>
-            <input type="mobile" id="mobile" name="mobile" required>
+            <input
+              type="tel"
+              id="mobile"
+              name="mobile"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="+91 98765 43210"
+              pattern="[\d\s()+-]{7,20}"
+              required>
           </div>
           <div class="form-group">
             <label for="service-selection">Primary Interest</label>
@@ -137,6 +151,8 @@
             <textarea id="project-details" name="details" rows="6" required placeholder="Brand, brief, timeline, and deliverables."></textarea>
           </div>
           <button type="submit" class="cta-button" style="width: 100%;">Send enquiry</button>
+          <p class="form-note">We use these details only to respond to your enquiry.</p>
+          <p class="form-status" id="contact-form-status" data-form-status role="status" aria-live="polite" hidden></p>
         </form>
       </div>
     </div>
