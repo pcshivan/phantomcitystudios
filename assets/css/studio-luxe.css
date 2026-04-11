@@ -1485,6 +1485,51 @@ body.studio-page {
   min-height: 150px;
 }
 
+.studio-page .form-note,
+.studio-page .form-status {
+  margin: 0;
+}
+
+.studio-page .form-note {
+  color: var(--studio-text-soft);
+  font-size: 0.92rem;
+}
+
+.studio-page .form-status {
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--studio-text-soft);
+}
+
+.studio-page .form-status[hidden] {
+  display: none;
+}
+
+.studio-page .form-status.is-info {
+  border-color: rgba(255, 208, 108, 0.26);
+  background: rgba(255, 208, 108, 0.08);
+  color: #ffe1a6;
+}
+
+.studio-page .form-status.is-success {
+  border-color: rgba(104, 231, 255, 0.32);
+  background: rgba(32, 208, 255, 0.08);
+  color: var(--studio-blue-strong);
+}
+
+.studio-page .form-status.is-error {
+  border-color: rgba(255, 122, 149, 0.3);
+  background: rgba(255, 122, 149, 0.08);
+  color: #ffd1db;
+}
+
+.studio-page .cta-button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .studio-page .hero-section {
   width: min(calc(100% - 2rem), var(--studio-width));
   margin: 0 auto 1.5rem;
