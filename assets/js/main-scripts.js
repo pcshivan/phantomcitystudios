@@ -7,9 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   runSafely(setupTiltCard);
   runSafely(setupFaqAccordion);
   runSafely(setupContactPackagePrefill);
+  runSafely(setupContactFormSubmission);
   runSafely(setupSoundToggleLabels);
   runSafely(setCurrentYear);
 });
+
+const CONTACT_FORM_ENDPOINT = "https://formspree.io/f/xldnnovk";
 
 function runSafely(setupFn) {
   try {
@@ -268,18 +271,193 @@ function setupContactPackagePrefill() {
     return;
   }
 
-  contactForm.setAttribute("action", "https://formspree.io/f/xldnnovk");
+  contactForm.setAttribute("action", CONTACT_FORM_ENDPOINT);
 
   try {
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedPackage = urlParams.get("package");
     const serviceSelect = document.getElementById("service-selection");
+    const selectedPackage = getSelectedContactPackage();
 
     if (selectedPackage && serviceSelect && serviceSelect.querySelector(`[value="${selectedPackage}"]`)) {
       serviceSelect.value = selectedPackage;
     }
+
+    syncContactFormMetadata(contactForm);
   } catch (error) {
     console.error("Unable to sync selected package from the URL.", error);
+  }
+}
+
+function setupContactFormSubmission() {
+  const contactForm = document.getElementById("contact-form");
+
+  if (!contactForm) {
+    return;
+  }
+
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const statusNode = contactForm.querySelector("[data-form-status]");
+  const defaultButtonLabel = submitButton ? submitButton.textContent : "";
+
+  contactForm.setAttribute("action", CONTACT_FORM_ENDPOINT);
+  syncContactFormMetadata(contactForm);
+
+  ["input", "change"].forEach((eventName) => {
+    contactForm.addEventListener(eventName, () => {
+      syncContactFormMetadata(contactForm);
+    });
+  });
+
+  contactForm.addEventListener("submit", async (event) => {
+    trimContactFormFields(contactForm);
+    syncContactFormMetadata(contactForm);
+    stampContactFormSubmission(contactForm);
+
+    if (typeof window.fetch !== "function") {
+      return;
+    }
+
+    event.preventDefault();
+
+    const isValid =
+      typeof contactForm.reportValidity === "function" ? contactForm.reportValidity() : contactForm.checkValidity();
+
+    if (!isValid) {
+      updateContactFormStatus(statusNode, "error", "Please review the highlighted fields and try again.");
+      return;
+    }
+
+    syncContactFormMetadata(contactForm);
+
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+
+    contactForm.setAttribute("aria-busy", "true");
+    updateContactFormStatus(statusNode, "info", "Sending your enquiry...");
+
+    try {
+      const response = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        let message = "We could not send your enquiry just now. Please try again in a moment.";
+
+        try {
+          const errorData = await response.json();
+
+          if (Array.isArray(errorData.errors) && errorData.errors.length) {
+            message = errorData.errors.map((error) => error.message).join(" ");
+          }
+        } catch (error) {
+          console.error("Unable to parse contact form error response.", error);
+        }
+
+        throw new Error(message);
+      }
+
+      contactForm.reset();
+      setupContactPackagePrefill();
+      updateContactFormStatus(statusNode, "success", "Thanks. Your enquiry has been sent successfully.");
+    } catch (error) {
+      console.error("Contact form submission failed.", error);
+      updateContactFormStatus(
+        statusNode,
+        "error",
+        error instanceof Error && error.message
+          ? error.message
+          : "An unexpected error occurred. Please try again shortly."
+      );
+    } finally {
+      contactForm.removeAttribute("aria-busy");
+
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultButtonLabel;
+      }
+
+      syncContactFormMetadata(contactForm);
+    }
+  });
+}
+
+function getSelectedContactPackage() {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get("package") || "";
+}
+
+function setContactFormFieldValue(contactForm, fieldName, fieldValue) {
+  let field = contactForm.elements.namedItem(fieldName);
+
+  if (!field) {
+    field = document.createElement("input");
+    field.type = "hidden";
+    field.name = fieldName;
+    contactForm.prepend(field);
+  }
+
+  if (field && "value" in field) {
+    field.value = fieldValue;
+  }
+}
+
+function syncContactFormMetadata(contactForm) {
+  const emailField = contactForm.elements.namedItem("email");
+  const serviceField = contactForm.elements.namedItem("service_interest");
+  const selectedPackage = getSelectedContactPackage();
+  const selectedServiceValue =
+    serviceField && "value" in serviceField && serviceField.value ? serviceField.value : "";
+  const selectedServiceLabel =
+    serviceField &&
+    "selectedOptions" in serviceField &&
+    serviceField.selectedOptions &&
+    serviceField.selectedOptions[0] &&
+    serviceField.selectedOptions[0].value
+      ? serviceField.selectedOptions[0].textContent.trim()
+      : "";
+  const subjectSuffix = selectedServiceValue ? ` - ${selectedServiceValue}` : "";
+
+  setContactFormFieldValue(contactForm, "_replyto", emailField && "value" in emailField ? emailField.value.trim() : "");
+  setContactFormFieldValue(contactForm, "_subject", `New Phantom City Studios Contact Enquiry${subjectSuffix}`);
+  setContactFormFieldValue(contactForm, "page_url", window.location.href);
+  setContactFormFieldValue(contactForm, "service_interest_label", selectedServiceLabel);
+  setContactFormFieldValue(contactForm, "selected_package", selectedPackage);
+}
+
+function stampContactFormSubmission(contactForm) {
+  setContactFormFieldValue(contactForm, "submitted_at", new Date().toISOString());
+}
+
+function trimContactFormFields(contactForm) {
+  ["name", "email", "mobile", "details"].forEach((fieldName) => {
+    const field = contactForm.elements.namedItem(fieldName);
+
+    if (field && "value" in field && typeof field.value === "string") {
+      field.value = field.value.trim();
+    }
+  });
+}
+
+function updateContactFormStatus(statusNode, type, message) {
+  if (!statusNode) {
+    return;
+  }
+
+  statusNode.hidden = false;
+  statusNode.textContent = message;
+  statusNode.classList.remove("is-info", "is-success", "is-error");
+
+  if (type === "success") {
+    statusNode.classList.add("is-success");
+  } else if (type === "error") {
+    statusNode.classList.add("is-error");
+  } else {
+    statusNode.classList.add("is-info");
   }
 }
 
